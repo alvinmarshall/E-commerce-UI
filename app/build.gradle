@@ -22,7 +22,14 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
+
+        debug{
+            debuggable true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
     }
+
+
 
 }
 
@@ -64,7 +71,7 @@ dependencies {
     // Coroutines
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$kotlin_coroutine_version"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$kotlin_coroutine_version"
-//    testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:$kotlin_coroutine_version"
+    testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:$kotlin_coroutine_test_version"
 
     // Room components
     implementation "androidx.room:room-runtime:$room_version"
@@ -82,6 +89,14 @@ dependencies {
     implementation "com.google.firebase:firebase-auth:$firebase_auth_version"
     implementation "com.google.firebase:firebase-analytics:$firebase_analytics"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.1.1"
+
+    // google auth
+    implementation "com.google.android.gms:play-services-auth:$google_auth_version"
+
+    //facebook auth
+    implementation "com.facebook.android:facebook-login:$facebook_auth_version"
+
+
 
 
     //leak canary
