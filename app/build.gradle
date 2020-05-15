@@ -1,0 +1,93 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'com.google.gms.google-services'
+android {
+    compileSdkVersion 29
+    buildToolsVersion "29.0.3"
+
+    defaultConfig {
+        applicationId "com.cheise_proj.e_commerce"
+        minSdkVersion 24
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation "androidx.appcompat:appcompat:$appcompatVersion"
+    implementation "androidx.core:core-ktx:$ktxVersion"
+    implementation "androidx.constraintlayout:constraintlayout:$constraintlayoutVersion"
+    implementation "com.google.android.material:material:$material_version"
+
+
+    //Testing
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    testImplementation "junit:junit:$junitVersion"
+    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
+    androidTestImplementation "androidx.test.espresso:espresso-core:$expresso_core"
+    testImplementation "org.mockito:mockito-core:$mockito_version"
+
+    //dagger
+    implementation "com.google.dagger:dagger:$dagger_version"
+    implementation "com.google.dagger:dagger-android:$dagger_version"
+    implementation "com.google.dagger:dagger-android-support:$dagger_version"
+    kapt "com.google.dagger:dagger-compiler:$dagger_version"
+    kapt "com.google.dagger:dagger-android-processor:$dagger_version"
+
+    //lifecycle
+    kapt "androidx.lifecycle:lifecycle-common-java8:$lifecyle_version"
+    implementation "androidx.lifecycle:lifecycle-extensions:$lifecyle_version"
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$liveData_lifecycle_version"
+
+    //glide
+    implementation "com.github.bumptech.glide:glide:$glide_version"
+    kapt "com.github.bumptech.glide:compiler:$glide_version"
+
+    //View pager 2
+    implementation "androidx.viewpager2:viewpager2:$viewPager2Version"
+
+    // Coroutines
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$kotlin_coroutine_version"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$kotlin_coroutine_version"
+//    testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:$kotlin_coroutine_version"
+
+    // Room components
+    implementation "androidx.room:room-runtime:$room_version"
+    implementation "androidx.room:room-ktx:$room_version"
+    kapt "androidx.room:room-compiler:$room_version"
+
+    // anko
+    implementation "org.jetbrains.anko:anko:$anko_version"
+
+    //navigation
+    implementation "androidx.navigation:navigation-fragment-ktx:$navigation_version"
+    implementation "androidx.navigation:navigation-ui-ktx:$navigation_version"
+
+    //firebase
+    implementation "com.google.firebase:firebase-auth:$firebase_auth_version"
+    implementation "com.google.firebase:firebase-analytics:$firebase_analytics"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.1.1"
+
+
+    //leak canary
+    debugImplementation "com.squareup.leakcanary:$leak_canary"
+
+    //timber
+    implementation "com.jakewharton.timber:timber:$rootProject.timber_version"
+
+}
