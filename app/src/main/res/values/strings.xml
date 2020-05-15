@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">E-commerce</string>
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="label_home">Home</string>
+    <string name="label_shop">Shop</string>
+    <string name="label_bag">Bag</string>
+    <string name="label_favorite">Favorite</string>
+    <string name="label_profile">Profile</string>
+    <string name="label_login">Login</string>
+    <string name="label_signup">SignUp</string>
 </resources>

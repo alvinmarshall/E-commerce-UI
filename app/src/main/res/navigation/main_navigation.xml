@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_navigation"
+    app:startDestination="@id/mainFragment">
+
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="com.cheise_proj.e_commerce.ui.main.MainFragment"
+        android:label="fragment_main"
+        tools:layout="@layout/fragment_main" >
+        <action
+            android:id="@+id/action_mainFragment_to_main2Fragment"
+            app:destination="@id/main2Fragment"
+            app:popUpToInclusive="false" />
+    </fragment>
+    <fragment
+        android:id="@+id/categoriesFragment"
+        android:name="com.cheise_proj.e_commerce.ui.category.CategoriesFragment"
+        android:label="fragment_categories"
+        tools:layout="@layout/fragment_categories" />
+    <fragment
+        android:id="@+id/main2Fragment"
+        android:name="com.cheise_proj.e_commerce.ui.main.Main2Fragment"
+        android:label="fragment_main2"
+        tools:layout="@layout/fragment_main2" />
+    <fragment
+        android:id="@+id/main3Fragment"
+        android:name="com.cheise_proj.e_commerce.ui.main.Main3Fragment"
+        android:label="fragment_main3"
+        tools:layout="@layout/fragment_main3" />
+    <fragment
+        android:id="@+id/myBagFragment"
+        android:name="com.cheise_proj.e_commerce.ui.bag.MyBagFragment"
+        android:label="fragment_my_bag"
+        tools:layout="@layout/fragment_my_bag" />
+    <fragment
+        android:id="@+id/promoCodeFragment"
+        android:name="com.cheise_proj.e_commerce.ui.bag.PromoCodeFragment"
+        android:label="fragment_promo_code"
+        tools:layout="@layout/fragment_promo_code" />
+    <fragment
+        android:id="@+id/checkOutFragment"
+        android:name="com.cheise_proj.e_commerce.ui.bag.CheckOutFragment"
+        android:label="fragment_check_out"
+        tools:layout="@layout/fragment_check_out" />
+    <fragment
+        android:id="@+id/paymentCardFragment"
+        android:name="com.cheise_proj.e_commerce.ui.bag.PaymentCardFragment"
+        android:label="fragment_payment_card"
+        tools:layout="@layout/fragment_payment_card" />
+    <fragment
+        android:id="@+id/favoriteFragment"
+        android:name="com.cheise_proj.e_commerce.ui.favorite.FavoriteFragment"
+        android:label="fragment_favorite"
+        tools:layout="@layout/fragment_favorite" />
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.cheise_proj.e_commerce.ui.profile.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" />
+</navigation>

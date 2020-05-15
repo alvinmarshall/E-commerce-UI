@@ -1,7 +1,6 @@
 package com.cheise_proj.e_commerce.di.module
 
 import com.cheise_proj.e_commerce.MainActivity
-import com.cheise_proj.e_commerce.ui.main.MainFragment
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 
@@ -13,6 +12,5 @@ interface ActivityModule {
 
 @Module
 interface FragmentModule {
-    @ContributesAndroidInjector
-    fun contributeMainFragment(): MainFragment
+
 }
