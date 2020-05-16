@@ -2,11 +2,35 @@
     <string name="app_name">E-commerce</string>
 
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!--    Bottom nav menu-->
     <string name="label_home">Home</string>
     <string name="label_shop">Shop</string>
     <string name="label_bag">Bag</string>
     <string name="label_favorite">Favorite</string>
     <string name="label_profile">Profile</string>
+
+    <!--    facebook-->
+    <string name="facebook_app_id">868050650378123</string>
+    <string name="fb_login_protocol_scheme">fb868050650378123</string>
+
+    <!--    Login-->
+    <string name="label_login_with_social">Or login with social account</string>
+    <string name="label_forgot_pass">Forgot password</string>
     <string name="label_login">Login</string>
+    <string name="label_password">Password</string>
+
+    <!--    Forgot Password-->
+    <string name="label_send">Send</string>
+    <string name="label_forgot_password">Forgot your password?</string>
+    <string name="label_forgot_pass_hint">Please, enter your email address. You will receive a link to create a new password via email.</string>
+
+    <!--    SignUp-->
+    <string name="label_have_account">Already have an account?</string>
+    <string name="label_signup_with_social">Or sign up with social account</string>
     <string name="label_signup">SignUp</string>
+    <string name="label_email">Email</string>
+    <string name="label_name">Name</string>
+    <string name="label_sign_up">Sign up</string>
+
 </resources>

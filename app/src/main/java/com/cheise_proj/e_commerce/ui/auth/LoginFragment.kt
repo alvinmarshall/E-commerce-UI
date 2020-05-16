@@ -24,22 +24,21 @@ class LoginFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        navigateToHomePage()
-        btn_signup.setOnClickListener {
-            navigateToSignUpPage()
-        }
+//        navigateToHomePage()
+
         btn_login.setOnClickListener { navigateToHomePage() }
+        btn_forgot_password.setOnClickListener { navigateToForgotPasswordPage() }
     }
+
+    private fun navigateToForgotPasswordPage() {
+        val action = LoginFragmentDirections.actionLoginFragmentToForgotPasswordFragment()
+        findNavController().navigate(action)
+    }
+
 
     private fun navigateToHomePage() {
         val action = LoginFragmentDirections.actionLoginFragmentToHomeFragment()
         findNavController().navigate(action)
     }
-
-    private fun navigateToSignUpPage() {
-        val action = LoginFragmentDirections.actionLoginFragmentToSignUpFragment()
-        findNavController().navigate(action)
-    }
-
 
 }

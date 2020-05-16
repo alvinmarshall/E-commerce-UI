@@ -24,7 +24,14 @@ class SignUpFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        btn_login.setOnClickListener { navigateToLoginPage() }
+//        navigateToLoginPage()
+        btn_have_account.setOnClickListener { navigateToLoginPage() }
+        btn_signup.setOnClickListener { navigateToHome() }
+    }
+
+    private fun navigateToHome() {
+        val action = SignUpFragmentDirections.actionSignUpFragmentToHomeFragment()
+        findNavController().navigate(action)
     }
 
     private fun navigateToLoginPage() {
