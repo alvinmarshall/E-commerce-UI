@@ -8,9 +8,10 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.bumptech.glide.Glide
+import dagger.android.support.DaggerFragment
 import kotlinx.android.synthetic.main.toolbar_collapse_with_button.*
 
-abstract class BaseFragment : Fragment() {
+abstract class BaseFragment : DaggerFragment() {
     private fun initToolbar() {
         val navHostFragment = findNavController()
         val toolbar = getToolBar()

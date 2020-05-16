@@ -1,0 +1,52 @@
+{
+    "data": [
+        {
+            "CategoryID": "1",
+            "CategoryName": "Beverages",
+            "Description": "Soft drinks, coffees, teas, beers, and ales",
+            "ImageUrl": "https://picsum.photos/200/300/?blur"
+        },
+        {
+            "CategoryID": "2",
+            "CategoryName": "Condiments",
+            "Description": "Sweet and savory sauces, relishes, spreads, and seasonings",
+            "ImageUrl": "https://picsum.photos/200/300/?blur"
+        },
+        {
+            "CategoryID": "3",
+            "CategoryName": "Confections",
+            "Description": "Desserts, candies, and sweet breads",
+            "ImageUrl": "https://picsum.photos/200/300/?blur"
+        },
+        {
+            "CategoryID": "4",
+            "CategoryName": "Dairy Products",
+            "Description": "Cheeses",
+            "ImageUrl": "https://picsum.photos/200/300/?blur"
+        },
+        {
+            "CategoryID": "5",
+            "CategoryName": "Grains/Cereals",
+            "Description": "Breads, crackers, pasta, and cereal",
+            "ImageUrl": "https://picsum.photos/200/300/?blur"
+        },
+        {
+            "CategoryID": "6",
+            "CategoryName": "Meat/Poultry",
+            "Description": "Prepared meats",
+            "ImageUrl": "https://picsum.photos/200/300/?blur"
+        },
+        {
+            "CategoryID": "7",
+            "CategoryName": "Produce",
+            "Description": "Dried fruit and bean curd",
+            "ImageUrl": "https://picsum.photos/200/300/?blur"
+        },
+        {
+            "CategoryID": "8",
+            "CategoryName": "Seafood",
+            "Description": "Seaweed and fish",
+            "ImageUrl": "https://picsum.photos/200/300/?blur"
+        }
+    ]
+}

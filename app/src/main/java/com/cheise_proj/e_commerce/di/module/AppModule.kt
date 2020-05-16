@@ -3,6 +3,8 @@ package com.cheise_proj.e_commerce.di.module
 import android.app.Application
 import android.content.Context
 import com.cheise_proj.e_commerce.di.module.auth.AuthModule
+import com.cheise_proj.e_commerce.di.module.remote.RemoteModule
+import com.cheise_proj.e_commerce.di.module.repository.RepositoryModule
 import com.cheise_proj.e_commerce.di.module.viewmodel.ViewModelModule
 import com.cheise_proj.e_commerce.utils.INetworkState
 import com.cheise_proj.e_commerce.utils.NetworkState
@@ -11,7 +13,15 @@ import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton
 
-@Module(includes = [AppModule.Binders::class, AuthModule::class, ViewModelModule::class])
+@Module(
+    includes =
+    [AppModule.Binders::class,
+        AuthModule::class,
+        RepositoryModule::class,
+        RemoteModule::class,
+        ViewModelModule::class
+    ]
+)
 class AppModule {
 
     @Module
