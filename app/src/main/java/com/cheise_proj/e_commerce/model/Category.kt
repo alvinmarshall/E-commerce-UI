@@ -1,8 +1,9 @@
 package com.cheise_proj.e_commerce.model
 
-data class Categories(
+data class Category(
     val categoryID: String,
     val categoryName: String,
     val description: String,
-    val imageUrl: String
+    val imageUrl: String,
+    var product: List<Product>
 )

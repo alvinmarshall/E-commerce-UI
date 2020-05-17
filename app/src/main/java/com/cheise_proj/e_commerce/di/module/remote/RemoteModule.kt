@@ -1,7 +1,7 @@
 package com.cheise_proj.e_commerce.di.module.remote
 
+import com.cheise_proj.e_commerce.BuildConfig
 import com.cheise_proj.e_commerce.data.service.ApiService
-import com.cheise_proj.e_commerce.utils.BASE_URL
 import dagger.Module
 import dagger.Provides
 import okhttp3.OkHttpClient
@@ -39,7 +39,7 @@ class RemoteModule {
         return Retrofit.Builder()
             .addConverterFactory(GsonConverterFactory.create())
             .client(okHttpClient)
-            .baseUrl(BASE_URL)
+            .baseUrl(BuildConfig.BASE_URL)
             .build()
     }
 

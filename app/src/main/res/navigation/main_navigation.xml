@@ -24,7 +24,13 @@
         android:id="@+id/main2Fragment"
         android:name="com.cheise_proj.e_commerce.ui.main.Main2Fragment"
         android:label="fragment_main2"
-        tools:layout="@layout/fragment_main2" />
+        tools:layout="@layout/fragment_main2" >
+        <argument
+            android:name="p_categoryImage"
+            app:argType="string"
+            app:nullable="true"
+            android:defaultValue="@null" />
+    </fragment>
     <fragment
         android:id="@+id/main3Fragment"
         android:name="com.cheise_proj.e_commerce.ui.main.Main3Fragment"

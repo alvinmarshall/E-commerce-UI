@@ -7,8 +7,8 @@ import retrofit2.http.GET
 interface ApiService {
 
     @GET("products.json")
-    suspend fun getProducts(): List<ProductDto>
+    suspend fun getProducts(): ProductDto
 
     @GET("categories.json")
-    suspend fun getCategories(): List<CategoryDto>
+    suspend fun getCategories(): CategoryDto
 }

@@ -13,6 +13,9 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
 
     defaultConfig {
         applicationId "com.cheise_proj.e_commerce"
@@ -36,6 +39,10 @@ android {
         }
     }
 
+   buildTypes.each {
+       it.buildConfigField 'String','BASE_URL', base_url
+   }
+
 
 }
 
@@ -53,6 +60,7 @@ dependencies {
     testImplementation "junit:junit:$junitVersion"
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation "androidx.test.espresso:espresso-core:$expresso_core"
+    testImplementation "androidx.arch.core:core-testing:$archCoreTestVersion"
     testImplementation "org.mockito:mockito-core:$mockito_version"
 
     //dagger
