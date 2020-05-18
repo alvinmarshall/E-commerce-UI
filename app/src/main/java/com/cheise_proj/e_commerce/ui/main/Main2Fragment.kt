@@ -81,4 +81,9 @@ class Main2Fragment : BaseFragment() {
         }
     }
 
+    override fun onDestroyView() {
+        recycler_view.adapter = null
+        super.onDestroyView()
+    }
+
 }

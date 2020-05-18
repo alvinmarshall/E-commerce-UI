@@ -90,5 +90,10 @@ class MainFragment : BaseFragment() {
         findNavController().navigate(action)
     }
 
+    override fun onDestroyView() {
+        recycler_view.adapter = null
+        super.onDestroyView()
+    }
+
 
 }
