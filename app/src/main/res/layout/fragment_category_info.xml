@@ -4,24 +4,27 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.category.CategoriesFragment">
+    android:padding="16dp"
+    tools:context=".ui.category.ui.CategoryInfoFragment">
 
-    <com.google.android.material.tabs.TabLayout
-        android:id="@+id/tab_layout"
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_view_all"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:text="@string/label_view_all"
+        app:backgroundTint="@android:color/holo_red_dark"
+        app:cornerRadius="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <androidx.viewpager2.widget.ViewPager2
-        android:id="@+id/view_pager"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_view"
         android:layout_width="match_parent"
-        app:layout_constraintTop_toBottomOf="@id/tab_layout"
+        android:layout_height="0dp"
+        android:layout_marginTop="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_height="0dp"/>
-
-
+        app:layout_constraintTop_toBottomOf="@+id/btn_view_all"
+        tools:layout_editor_absoluteX="16dp"
+        tools:listitem="@layout/list_categories" />
 </androidx.constraintlayout.widget.ConstraintLayout>

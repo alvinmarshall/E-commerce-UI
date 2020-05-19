@@ -1,4 +1,4 @@
-package com.cheise_proj.e_commerce.adapter
+package com.cheise_proj.e_commerce.ui.category.adapter
 
 import android.view.LayoutInflater
 import android.view.View
@@ -6,22 +6,24 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.cheise_proj.e_commerce.R
+import com.cheise_proj.e_commerce.adapter.CategoryDiff
 import com.cheise_proj.e_commerce.di.module.glide.GlideApp
 import com.cheise_proj.e_commerce.model.Category
 import com.cheise_proj.e_commerce.utils.ItemClickListener
-import kotlinx.android.synthetic.main.list_product_category_image.view.*
+import kotlinx.android.synthetic.main.list_categories_with_image.view.*
 
-class CategoryImageAdapter() :
+class CategoryImageAdapter :
     ListAdapter<Category, CategoryImageAdapter.CategoryImgVh>(CategoryDiff()) {
-    private var itemClickListener: ItemClickListener<String?>? = null
+    private var itemClickListener: ItemClickListener<Category?>? = null
 
-    internal fun setItemCallback(callback: ItemClickListener<String?>) {
+    internal fun setItemClickCallback(callback: ItemClickListener<Category?>) {
         itemClickListener = callback
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CategoryImgVh {
         return CategoryImgVh(
-            LayoutInflater.from(parent.context).inflate(R.layout.list_product_category_image, parent, false)
+            LayoutInflater.from(parent.context)
+                .inflate(R.layout.list_categories_with_image, parent, false)
         )
     }
 
@@ -30,10 +32,10 @@ class CategoryImageAdapter() :
     }
 
     class CategoryImgVh(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        fun bind(item: Category?, itemClickListener: ItemClickListener<String?>?) {
+        fun bind(item: Category?, itemClickListener: ItemClickListener<Category?>?) {
             with(itemView) {
-                item_name.text = item?.categoryName
-                this.setOnClickListener { itemClickListener?.onClick(item?.categoryID) }
+                tv_item_1.text = item?.categoryName
+                setOnClickListener { itemClickListener?.onClick(item) }
                 GlideApp.with(context).load(item?.imageUrl).centerCrop().into(img_item)
             }
         }

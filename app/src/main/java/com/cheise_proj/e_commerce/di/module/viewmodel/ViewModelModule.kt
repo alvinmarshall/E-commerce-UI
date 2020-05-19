@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.cheise_proj.e_commerce.di.key.ViewModelKey
 import com.cheise_proj.e_commerce.factory.ViewModelFactory
+import com.cheise_proj.e_commerce.ui.category.CategoryViewModel
 import com.cheise_proj.e_commerce.ui.main.MainViewModel
 import dagger.Binds
 import dagger.Module
@@ -16,6 +17,12 @@ class ViewModelModule {
     interface Binders {
         @Binds
         fun bindViewModelFactory(viewModelFactory: ViewModelFactory): ViewModelProvider.Factory
+
+
+        @Binds
+        @IntoMap
+        @ViewModelKey(CategoryViewModel::class)
+        fun bindCategoryViewModel(categoryViewModel: CategoryViewModel): ViewModel
 
         @Binds
         @IntoMap

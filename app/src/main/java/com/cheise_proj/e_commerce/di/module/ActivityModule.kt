@@ -1,6 +1,8 @@
 package com.cheise_proj.e_commerce.di.module
 
 import com.cheise_proj.e_commerce.MainActivity
+import com.cheise_proj.e_commerce.ui.category.CategoriesFragment
+import com.cheise_proj.e_commerce.ui.category.module.CategoryModule
 import com.cheise_proj.e_commerce.ui.main.Main2Fragment
 import com.cheise_proj.e_commerce.ui.main.Main3Fragment
 import com.cheise_proj.e_commerce.ui.main.MainFragment
@@ -23,5 +25,8 @@ interface FragmentModule {
 
     @ContributesAndroidInjector
     fun contributeMain3Fragment(): Main3Fragment
+
+    @ContributesAndroidInjector(modules = [CategoryModule::class])
+    fun contributeCategoriesFragment(): CategoriesFragment
 
 }

@@ -117,7 +117,7 @@
             android:id="@+id/tv_social"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="126dp"
+            android:layout_marginTop="64dp"
             android:text="@string/label_signup_with_social"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
