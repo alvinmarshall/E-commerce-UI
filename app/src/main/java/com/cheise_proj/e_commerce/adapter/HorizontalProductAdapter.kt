@@ -64,12 +64,3 @@ class HorizontalProductAdapter :
 
 }
 
-class ProductDiff : DiffUtil.ItemCallback<Product>() {
-    override fun areItemsTheSame(oldItem: Product, newItem: Product): Boolean {
-        return oldItem.categoryID == newItem.categoryID
-    }
-
-    override fun areContentsTheSame(oldItem: Product, newItem: Product): Boolean {
-        return oldItem == newItem
-    }
-}

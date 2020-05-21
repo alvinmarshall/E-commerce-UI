@@ -16,11 +16,6 @@
             app:popUpToInclusive="false" />
     </fragment>
     <fragment
-        android:id="@+id/categoriesFragment"
-        android:name="com.cheise_proj.e_commerce.ui.category.CategoriesFragment"
-        android:label="fragment_categories"
-        tools:layout="@layout/fragment_categories" />
-    <fragment
         android:id="@+id/main2Fragment"
         android:name="com.cheise_proj.e_commerce.ui.main.Main2Fragment"
         android:label="fragment_main2"
@@ -66,4 +61,9 @@
         android:name="com.cheise_proj.e_commerce.ui.profile.ProfileFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" />
+    <fragment
+        android:id="@+id/categoryMainFragment"
+        android:name="com.cheise_proj.e_commerce.ui.category.ui.CategoryMainFragment"
+        android:label="fragment_category_main"
+        tools:layout="@layout/fragment_category_main" />
 </navigation>

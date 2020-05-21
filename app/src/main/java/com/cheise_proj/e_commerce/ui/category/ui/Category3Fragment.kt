@@ -13,18 +13,21 @@ import androidx.recyclerview.widget.RecyclerView
 import com.cheise_proj.e_commerce.R
 import com.cheise_proj.e_commerce.model.Category
 import com.cheise_proj.e_commerce.ui.category.BaseFragment
+import com.cheise_proj.e_commerce.ui.category.CategoryViewModel
+import com.cheise_proj.e_commerce.ui.category.adapter.CategoryImageAdapter
 import com.cheise_proj.e_commerce.utils.DELAY_MILL
 import kotlinx.android.synthetic.main.categories_common.*
 
 /**
  * A simple [Fragment] subclass.
  */
-class Category3Fragment : BaseFragment() {
+class Category3Fragment : BaseFragment<CategoryViewModel>() {
     companion object {
         fun newInstance() =
             Category3Fragment()
     }
 
+    private lateinit var adapter: CategoryImageAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -34,8 +37,13 @@ class Category3Fragment : BaseFragment() {
         return inflater.inflate(R.layout.fragment_category3, container, false)
     }
 
+    override fun getViewModel(): Class<CategoryViewModel> = CategoryViewModel::class.java
+
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        adapter = CategoryImageAdapter()
+
         configViewModel()
     }
 
@@ -50,6 +58,7 @@ class Category3Fragment : BaseFragment() {
     }
 
     private fun configViewModel() {
+        viewModel.loadCategories()
         initRecyclerView()
         handler.postDelayed({ subscribeObserver() }, DELAY_MILL)
     }

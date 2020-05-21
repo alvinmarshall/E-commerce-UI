@@ -105,6 +105,9 @@ buildscript {
 
         //leak canary
         leak_canary = 'leakcanary-android:2.2'
+
+        //range seekbar
+        rangeseekbar_version = '1.0.0'
     }
 
         repositories {

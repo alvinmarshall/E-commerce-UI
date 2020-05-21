@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/category_navigation"
+    app:startDestination="@id/categoriesFragment">
+
+    <fragment
+        android:id="@+id/categoryInfoFragment"
+        android:name="com.cheise_proj.e_commerce.ui.category.ui.CategoryInfoFragment"
+        android:label="Categories"
+        tools:layout="@layout/fragment_category_info" >
+        <action
+            android:id="@+id/action_categoryInfoFragment_to_catalogFragment"
+            app:destination="@id/catalogFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/catalogFragment"
+        android:name="com.cheise_proj.e_commerce.ui.category.ui.CategoryCatalogFragment"
+        android:label="Catalog"
+        tools:layout="@layout/fragment_category_catalog">
+        <argument
+            android:name="category_opt"
+            app:argType="string[]" />
+        <action
+            android:id="@+id/action_catalogFragment_to_categoryFilterFragment"
+            app:destination="@id/categoryFilterFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/categoryFilterFragment"
+        android:name="com.cheise_proj.e_commerce.ui.category.ui.CategoryFilterFragment"
+        android:label="Filters"
+        tools:layout="@layout/fragment_category_filter" />
+    <fragment
+        android:id="@+id/categoriesFragment"
+        android:name="com.cheise_proj.e_commerce.ui.category.ui.CategoriesFragment"
+        android:label="Categories"
+        tools:layout="@layout/fragment_categories">
+        <action
+            android:id="@+id/action_categoriesFragment_to_categoryInfoFragment2"
+            app:destination="@id/categoryInfoFragment" />
+    </fragment>
+</navigation>

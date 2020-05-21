@@ -1,4 +1,4 @@
-package com.cheise_proj.e_commerce.ui.category
+package com.cheise_proj.e_commerce.ui.category.ui
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,19 +6,19 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.cheise_proj.e_commerce.R
+import com.cheise_proj.e_commerce.ui.category.BaseFragment
+import com.cheise_proj.e_commerce.ui.category.CategoryViewModel
 import com.cheise_proj.e_commerce.ui.category.adapter.CategorySlideAdapter
-import com.cheise_proj.e_commerce.ui.category.ui.Category2Fragment
-import com.cheise_proj.e_commerce.ui.category.ui.Category3Fragment
-import com.cheise_proj.e_commerce.ui.category.ui.CategoryFragment
 import com.google.android.material.tabs.TabLayoutMediator
 import kotlinx.android.synthetic.main.fragment_categories.*
 
 /**
  * A simple [Fragment] subclass.
  */
-class CategoriesFragment : BaseFragment() {
+class CategoriesFragment : BaseFragment<CategoryViewModel>() {
     private lateinit var pagerAdapter: CategorySlideAdapter
     private val tabTitles = arrayListOf("Women", "Men", "Kids")
+    private var tabLayoutMediator: TabLayoutMediator? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -27,6 +27,7 @@ class CategoriesFragment : BaseFragment() {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_categories, container, false)
     }
+    override fun getViewModel(): Class<CategoryViewModel> = CategoryViewModel::class.java
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -47,11 +48,22 @@ class CategoriesFragment : BaseFragment() {
         view_pager.apply {
             this.adapter = pagerAdapter
         }
-        TabLayoutMediator(tab_layout, view_pager) { tab, position ->
+        tabLayoutMediator = TabLayoutMediator(tab_layout, view_pager) { tab, position ->
             tab.text = tabTitles[position]
             view_pager.setCurrentItem(tab.position, true)
-        }.attach()
+        }
+        tabLayoutMediator?.attach()
+
     }
+
+    override fun onDestroyView() {
+        tabLayoutMediator?.detach()
+        tab_layout.removeAllViews()
+        view_pager.adapter = null
+        view_pager.removeAllViews()
+        super.onDestroyView()
+    }
+
 
 
 }

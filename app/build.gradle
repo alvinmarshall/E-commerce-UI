@@ -132,5 +132,10 @@ dependencies {
     //Gson
     implementation "com.google.code.gson:gson:$gson_version"
 
+    //range seekbar
+    implementation "com.rizlee.view:rangeseekbar:$rangeseekbar_version"
+
+//    implementation 'com.github.Inconnu08:android-ratingreviews:1.2.0'
+
 
 }
