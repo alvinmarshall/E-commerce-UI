@@ -21,6 +21,11 @@ class MainViewModel @Inject constructor(
     ViewModel() {
     private val _productCategory: MutableLiveData<List<Category>> = MutableLiveData()
     val productCategory: LiveData<List<Category>> = _productCategory
+    private val _loadingState: MutableLiveData<Boolean> = MutableLiveData(true)
+    private val _errorMsg: MutableLiveData<String> = MutableLiveData()
+    val isLoading: LiveData<Boolean> = _loadingState
+    val errorMsg: LiveData<String> = _errorMsg
+
 
     fun getProducts() {
         viewModelScope.launch {
@@ -28,29 +33,44 @@ class MainViewModel @Inject constructor(
                 .getProducts()
                 .onSuccess { products ->
                     Timber.i("product: $products")
-                }.onError { error -> Timber.i("error: ${error.message}") }
+                    _loadingState.postValue(false)
+                }.onError { error ->
+                    Timber.i("error: ${error.message}")
+                    _loadingState.postValue(false)
+                    _errorMsg.postValue(error.message)
+                }
         }
     }
 
     fun getProductCategories() {
-        viewModelScope.launch {
+        viewModelScope.launch(dispatcher) {
             productRepository.getProductCategories()
                 .onSuccess { category ->
                     Timber.i("category: $category")
-                    _productCategory.value = category
+                    _productCategory.postValue(category)
+                    _loadingState.postValue(false)
                 }
-                .onError { error -> Timber.i("error: ${error.message}") }
+                .onError { error ->
+                    Timber.i("error: ${error.message}")
+                    _loadingState.postValue(false)
+                    _errorMsg.postValue(error.message)
+                }
         }
     }
 
     fun getCategories() {
-        viewModelScope.launch {
+        viewModelScope.launch(dispatcher) {
             productRepository.getProductCategories()
                 .onSuccess { category ->
                     Timber.i("category: $category")
-                    _productCategory.value = category
+                    _productCategory.postValue(category)
+                    _loadingState.postValue(false)
                 }
-                .onError { error -> Timber.i("error: ${error.message}") }
+                .onError { error ->
+                    Timber.i("error: ${error.message}")
+                    _loadingState.postValue(false)
+                    _errorMsg.postValue(error.message)
+                }
         }
     }
 

@@ -1,6 +1,11 @@
-package com.cheise_proj.e_commerce.model
+package com.cheise_proj.e_commerce.data.db.entity
 
-data class Product(
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+
+@Entity(tableName = "product")
+data class ProductEntity(
+    @PrimaryKey(autoGenerate = false)
     val productID: String,
     val productName: String,
     val supplierID: String,
@@ -12,5 +17,7 @@ data class Product(
     val reorderLevel: String,
     val discontinued: String,
     val imageUrl: String,
-    val favorite:Int
-)
+    var favorite: Int = 0
+) {
+    constructor() : this("", "", "", "", "", "", "", "", "", "", "")
+}

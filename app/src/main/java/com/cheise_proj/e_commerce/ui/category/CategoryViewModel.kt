@@ -24,23 +24,41 @@ class CategoryViewModel @Inject constructor(
     private val _categories: MutableLiveData<List<Category>> = MutableLiveData()
     private val _products: MutableLiveData<List<Product>> = MutableLiveData()
     private val _viewStatus: MutableLiveData<Boolean> = MutableLiveData(true)
+    private val _loadingState: MutableLiveData<Boolean> = MutableLiveData(true)
     val getViewStatus: LiveData<Boolean> = _viewStatus
     val categories: LiveData<List<Category>> = _categories
     val products: LiveData<List<Product>> = _products
+    val isLoading: LiveData<Boolean> = _loadingState
+    private val _errorMsg: MutableLiveData<String> = MutableLiveData()
+    val errorMsg: LiveData<String> = _errorMsg
 
     fun loadCategories() {
         viewModelScope.launch(dispatcher) {
             productRepository.getCategories()
-                .onSuccess { category -> _categories.postValue(category) }
-                .onError { error -> Timber.i("error: $error") }
+                .onSuccess { category ->
+                    _categories.postValue(category)
+                    _loadingState.postValue(false)
+                }
+                .onError { error ->
+                    Timber.i("error: $error")
+                    _loadingState.postValue(false)
+                    _errorMsg.postValue(error.message)
+                }
         }
     }
 
     fun loadProducts() {
         viewModelScope.launch(dispatcher) {
             productRepository.getProducts()
-                .onSuccess { product -> _products.postValue(product) }
-                .onError { error -> Timber.i("error: $error") }
+                .onSuccess { product ->
+                    _products.postValue(product)
+                    _loadingState.postValue(false)
+                }
+                .onError { error ->
+                    Timber.i("error: $error")
+                    _loadingState.postValue(false)
+                    _errorMsg.postValue(error.message)
+                }
         }
     }
 

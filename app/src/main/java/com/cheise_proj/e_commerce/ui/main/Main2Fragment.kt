@@ -53,11 +53,20 @@ class Main2Fragment : BaseFragment() {
         viewModel = ViewModelProvider(this, factory)[MainViewModel::class.java]
         initRecyclerView()
         viewModel.getCategories()
-        handler.postDelayed({subscribeObserver()}, DELAY_MILL)
+        handler.postDelayed({ subscribeObserver() }, DELAY_MILL)
     }
 
     private fun subscribeObserver() {
         viewModel.productCategory.observe(viewLifecycleOwner, Observer(this::loadCategories))
+        viewModel.isLoading.observe(viewLifecycleOwner, Observer(this::showProgress))
+    }
+
+    private fun showProgress(status: Boolean?) {
+        status?.let { loading ->
+            if (!loading) {
+                progressBar.visibility = View.GONE
+            }
+        }
     }
 
     private fun loadCategories(data: List<Category>?) {
@@ -77,7 +86,7 @@ class Main2Fragment : BaseFragment() {
 
         recycler_view.apply {
             hasFixedSize()
-            layoutManager = StaggeredGridLayoutManager( 2, StaggeredGridLayoutManager.VERTICAL)
+            layoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
         }
     }
 

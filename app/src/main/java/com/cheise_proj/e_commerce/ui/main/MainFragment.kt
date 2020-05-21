@@ -58,6 +58,15 @@ class MainFragment : BaseFragment() {
 
     private fun subscribeObserver() {
         viewModel.productCategory.observe(viewLifecycleOwner, Observer(this::loadProductCategory))
+        viewModel.isLoading.observe(viewLifecycleOwner, Observer(this::showProgress))
+    }
+
+    private fun showProgress(status: Boolean?) {
+      status?.let { loading->
+          if (!loading){
+              progressBar.visibility = View.GONE
+          }
+      }
     }
 
     private fun loadProductCategory(data: List<Category>?) {

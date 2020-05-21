@@ -16,3 +16,5 @@ const val COLORS_VIEW = 1
 const val SIZE_VIEW = 2
 const val CATEGORY_VIEW = 3
 const val BRAND_VIEW = 4
+
+const val DATABASE_NAME = "ecommerce.db"

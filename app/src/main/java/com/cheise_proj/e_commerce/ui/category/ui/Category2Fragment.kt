@@ -25,6 +25,7 @@ class Category2Fragment : BaseFragment<CategoryViewModel>() {
         fun newInstance() =
             Category2Fragment()
     }
+
     private lateinit var adapter: CategoryImageAdapter
 
 
@@ -35,6 +36,7 @@ class Category2Fragment : BaseFragment<CategoryViewModel>() {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_category2, container, false)
     }
+
     override fun getViewModel(): Class<CategoryViewModel> = CategoryViewModel::class.java
 
 
@@ -68,6 +70,15 @@ class Category2Fragment : BaseFragment<CategoryViewModel>() {
 
     private fun subscribeObserver() {
         viewModel.categories.observe(viewLifecycleOwner, Observer(this::loadCategories))
+        viewModel.isLoading.observe(viewLifecycleOwner, Observer(this::showProgress))
+    }
+
+    private fun showProgress(status: Boolean?) {
+        status?.let { loading ->
+            if (!loading) {
+                progressBar.visibility = View.GONE
+            }
+        }
     }
 
     private fun loadCategories(data: List<Category>?) {

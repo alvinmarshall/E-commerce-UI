@@ -72,6 +72,15 @@ class Category3Fragment : BaseFragment<CategoryViewModel>() {
 
     private fun subscribeObserver() {
         viewModel.categories.observe(viewLifecycleOwner, Observer(this::loadCategories))
+        viewModel.isLoading.observe(viewLifecycleOwner, Observer { status -> showProgress(status) })
+    }
+
+    private fun showProgress(status: Boolean?) {
+        status?.let { loading ->
+            if (!loading) {
+                progressBar.visibility = View.GONE
+            }
+        }
     }
 
     private fun loadCategories(data: List<Category>?) {

@@ -69,7 +69,8 @@ class CategoryCatalogFragment : BaseFragment<CategoryViewModel>() {
     }
 
     private fun navigateToFilterPage() {
-        val action = CategoryCatalogFragmentDirections.actionCatalogFragmentToCategoryFilterFragment()
+        val action =
+            CategoryCatalogFragmentDirections.actionCatalogFragmentToCategoryFilterFragment()
         findNavController().navigate(action)
     }
 
@@ -114,6 +115,15 @@ class CategoryCatalogFragment : BaseFragment<CategoryViewModel>() {
                 Observer { data -> loadProducts(data, status) })
 
         })
+        viewModel.isLoading.observe(viewLifecycleOwner, Observer { status -> showProgress(status) })
+    }
+
+    private fun showProgress(status: Boolean?) {
+        status?.let { loading ->
+            if (!loading) {
+                progressBar.visibility = View.GONE
+            }
+        }
     }
 
 

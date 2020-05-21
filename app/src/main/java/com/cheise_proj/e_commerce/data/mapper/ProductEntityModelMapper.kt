@@ -1,12 +1,12 @@
 package com.cheise_proj.e_commerce.data.mapper
 
+import com.cheise_proj.e_commerce.data.db.entity.ProductEntity
 import com.cheise_proj.e_commerce.model.Product
-import com.cheise_proj.e_commerce.model.dto.ProductData
 import com.cheise_proj.e_commerce.utils.IDataListMapper
 
-internal class ProductDtoModelMapper : IDataListMapper<ProductData, Product> {
-    override fun tToModel(t: ProductData): Product {
-        return Product(
+class ProductEntityModelMapper : IDataListMapper<Product, ProductEntity> {
+    override fun tToModel(t: Product): ProductEntity {
+        return ProductEntity(
             productID = t.productID,
             imageUrl = t.imageUrl,
             categoryID = t.categoryID,
@@ -18,12 +18,12 @@ internal class ProductDtoModelMapper : IDataListMapper<ProductData, Product> {
             unitPrice = t.unitPrice,
             unitsInStock = t.unitsInStock,
             unitsOnOrder = t.unitsOnOrder,
-            favorite = 0
+            favorite = t.favorite
         )
     }
 
-    override fun modelToT(m: Product): ProductData {
-        return ProductData(
+    override fun modelToT(m: ProductEntity): Product {
+        return Product(
             productID = m.productID,
             imageUrl = m.imageUrl,
             categoryID = m.categoryID,
@@ -34,22 +34,23 @@ internal class ProductDtoModelMapper : IDataListMapper<ProductData, Product> {
             supplierID = m.supplierID,
             unitPrice = m.unitPrice,
             unitsInStock = m.unitsInStock,
-            unitsOnOrder = m.unitsOnOrder
+            unitsOnOrder = m.unitsOnOrder,
+            favorite = m.favorite
         )
     }
 
-    override fun tListToModel(tList: List<ProductData>): List<Product> {
-        val data = arrayListOf<Product>()
-        tList.forEach { productData ->
-            data.add(tToModel(productData))
+    override fun tListToModel(tList: List<Product>): List<ProductEntity> {
+        val data = arrayListOf<ProductEntity>()
+        tList.forEach { product ->
+            data.add(tToModel(product))
         }
         return data
     }
 
-    override fun mListToT(mList: List<Product>): List<ProductData> {
-        val data = arrayListOf<ProductData>()
-        mList.forEach { product ->
-            data.add(modelToT(product))
+    override fun mListToT(mList: List<ProductEntity>): List<Product> {
+        val data = arrayListOf<Product>()
+        mList.forEach { entity ->
+            data.add(modelToT(entity))
         }
         return data
     }
