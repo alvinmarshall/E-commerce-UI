@@ -1,0 +1,52 @@
+{
+    "data": [
+        {
+            "CategoryID": "1",
+            "CategoryName": "Beverages",
+            "Description": "Soft drinks, coffees, teas, beers, and ales",
+            "ImageUrl": "https://kaboompics.com/cache/3/2/d/3/3/32d3308c5386bd6c10654fe783d2ae31ed7b5575.jpeg"
+        },
+        {
+            "CategoryID": "2",
+            "CategoryName": "Condiments",
+            "Description": "Sweet and savory sauces, relishes, spreads, and seasonings",
+            "ImageUrl": "https://kaboompics.com/cache/a/3/b/f/3/a3bf34bdd442f8ebad00abe7edfda4ecd49dcb8a.jpeg"
+        },
+        {
+            "CategoryID": "3",
+            "CategoryName": "Confections",
+            "Description": "Desserts, candies, and sweet breads",
+            "ImageUrl": "https://kaboompics.com/cache/c/c/9/9/0/cc990482f2993f0332368f047d1bc7f0e08314ea.jpeg"
+        },
+        {
+            "CategoryID": "4",
+            "CategoryName": "Dairy Products",
+            "Description": "Cheeses",
+            "ImageUrl": "https://kaboompics.com/cache/a/d/c/4/a/adc4aeb6f11c3a793892ccbca192048603ef7cdb.jpeg"
+        },
+        {
+            "CategoryID": "5",
+            "CategoryName": "Grains/Cereals",
+            "Description": "Breads, crackers, pasta, and cereal",
+            "ImageUrl": "https://kaboompics.com/cache/a/2/9/5/b/a295b3525908a24a30793f844d0fd4fcee837e4c.jpeg"
+        },
+        {
+            "CategoryID": "6",
+            "CategoryName": "Meat/Poultry",
+            "Description": "Prepared meats",
+            "ImageUrl": "https://kaboompics.com/cache/d/7/a/8/f/d7a8fe0aebe48159c57ac053be9a8c6d43ad713f.jpeg"
+        },
+        {
+            "CategoryID": "7",
+            "CategoryName": "Produce",
+            "Description": "Dried fruit and bean curd",
+            "ImageUrl": "https://kaboompics.com/cache/3/f/2/8/a/3f28af6266be5403b7aa2bdb8c46a24f6f33a7f3.jpeg"
+        },
+        {
+            "CategoryID": "8",
+            "CategoryName": "Seafood",
+            "Description": "Seaweed and fish",
+            "ImageUrl": "https://kaboompics.com/cache/8/a/d/f/1/8adf129ba8b7c8097e403979350d86eec94a3181.jpeg"
+        }
+    ]
+}
