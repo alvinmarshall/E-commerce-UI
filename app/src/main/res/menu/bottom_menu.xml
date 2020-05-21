@@ -6,7 +6,7 @@
         android:icon="@drawable/ic_home_black_24dp"
         android:title="@string/label_home" />
     <item
-        android:id="@+id/categoriesFragment"
+        android:id="@+id/categoryMainFragment"
         android:icon="@drawable/ic_shopping_cart_black_24dp"
         android:title="@string/label_shop" />
     <item

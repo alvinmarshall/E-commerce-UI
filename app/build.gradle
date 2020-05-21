@@ -13,6 +13,9 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
 
     defaultConfig {
         applicationId "com.cheise_proj.e_commerce"
@@ -36,6 +39,10 @@ android {
         }
     }
 
+    buildTypes.each {
+        it.buildConfigField 'String', 'BASE_URL', base_url
+    }
+
 
 }
 
@@ -50,9 +57,12 @@ dependencies {
 
     //Testing
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0'
     testImplementation "junit:junit:$junitVersion"
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation "androidx.test.espresso:espresso-core:$expresso_core"
+    testImplementation "androidx.arch.core:core-testing:$archCoreTestVersion"
     testImplementation "org.mockito:mockito-core:$mockito_version"
 
     //dagger
@@ -70,6 +80,10 @@ dependencies {
     //glide
     implementation "com.github.bumptech.glide:glide:$glide_version"
     kapt "com.github.bumptech.glide:compiler:$glide_version"
+    implementation "com.github.bumptech.glide:okhttp3-integration:$glide_version"
+
+    //okhttp
+    implementation "com.squareup.okhttp3:okhttp:$okhttpVersion"
 
     //View pager 2
     implementation "androidx.viewpager2:viewpager2:$viewPager2Version"
@@ -109,5 +123,19 @@ dependencies {
 
     //timber
     implementation "com.jakewharton.timber:timber:$rootProject.timber_version"
+
+    //Retrofit
+    implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
+    implementation "com.squareup.okhttp3:logging-interceptor:$okhttp_interceptor_version"
+
+    //Gson
+    implementation "com.google.code.gson:gson:$gson_version"
+
+    //range seekbar
+    implementation "com.rizlee.view:rangeseekbar:$rangeseekbar_version"
+
+//    implementation 'com.github.Inconnu08:android-ratingreviews:1.2.0'
+
 
 }

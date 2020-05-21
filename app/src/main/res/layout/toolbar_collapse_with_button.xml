@@ -40,6 +40,7 @@
             app:layout_collapseMode="parallax">
 
             <TextView
+                android:id="@+id/toolbar_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 tools:text="Fashion Sale"

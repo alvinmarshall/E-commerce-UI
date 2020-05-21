@@ -32,5 +32,13 @@
     <string name="label_email">Email</string>
     <string name="label_name">Name</string>
     <string name="label_sign_up">Sign up</string>
+    <string name="label_view_all">View all</string>
+
+    <string name="bracket_text_placeholder">( %1$d )</string>
+    <string name="percentage_text_placeholder">%1$d %2$s </string>
+    <string name="label_choose_category">Choose a category</string>
+    <string name="label_sort_by">Sort by</string>
+    <string name="label_apply">apply</string>
+    <string name="label_discard">discard</string>
 
 </resources>
