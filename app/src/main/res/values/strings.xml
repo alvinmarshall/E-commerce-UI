@@ -40,5 +40,8 @@
     <string name="label_sort_by">Sort by</string>
     <string name="label_apply">apply</string>
     <string name="label_discard">discard</string>
+    <string name="label_select_size">Select size</string>
+    <string name="label_size_info">Size info</string>
+    <string name="label_add_to_cart">add to cart</string>
 
 </resources>

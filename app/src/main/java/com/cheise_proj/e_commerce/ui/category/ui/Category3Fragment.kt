@@ -1,15 +1,14 @@
 package com.cheise_proj.e_commerce.ui.category.ui
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-
 import com.cheise_proj.e_commerce.R
 import com.cheise_proj.e_commerce.model.Category
 import com.cheise_proj.e_commerce.ui.category.BaseFragment

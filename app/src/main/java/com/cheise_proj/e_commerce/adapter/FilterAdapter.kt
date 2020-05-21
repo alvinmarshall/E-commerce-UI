@@ -1,49 +1,52 @@
 package com.cheise_proj.e_commerce.adapter
 
-import android.view.Gravity
+import android.graphics.drawable.ColorDrawable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.LinearLayout
+import android.widget.ImageView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.cheise_proj.e_commerce.R
-import com.cheise_proj.e_commerce.model.BrandOpts
-import com.cheise_proj.e_commerce.model.CategoryOpts
+import com.cheise_proj.e_commerce.di.module.glide.GlideApp
 import com.cheise_proj.e_commerce.model.FilterOpts
-import com.cheise_proj.e_commerce.model.PriceRange
 import com.cheise_proj.e_commerce.utils.*
 import com.google.android.material.chip.Chip
 import kotlinx.android.synthetic.main.brand_opt_item.view.*
 import kotlinx.android.synthetic.main.chip_items.view.*
+import kotlinx.android.synthetic.main.color_palette.view.*
 import kotlinx.android.synthetic.main.color_palette.view.tv_item_1
 
 class FilterAdapter :
     ListAdapter<FilterOpts, RecyclerView.ViewHolder>(FilterDiff()) {
-    private var colorData: List<Int> = emptyList()
-    private var sizesData: List<String> = emptyList()
-    private var priceRangeData: List<PriceRange> = emptyList()
-    private var brandOptsData: List<BrandOpts> = emptyList()
-    private var categoryOptsData: List<CategoryOpts> = emptyList()
+    private var colorData: Array<Int> = emptyArray()
+    private var sizesData: Array<String> = emptyArray()
+    private var brandOptsData: Array<String> = emptyArray()
+    private var categoryOptsData: Array<String> = emptyArray()
+    private var brandItemClickListener: ItemClickListener<String?>? = null
 
     internal fun addSizesOpts(
-        sizeList: List<String>
+        sizeList: Array<String>
     ) {
         sizesData = sizeList
 
     }
 
-    internal fun addColorOpts(colorList: List<Int>) {
+    internal fun addColorOpts(colorList: Array<Int>) {
         colorData = colorList
     }
 
-    internal fun addCategoryOpts(categoryOpts: List<CategoryOpts>) {
+    internal fun addCategoryOpts(categoryOpts: Array<String>) {
         categoryOptsData = categoryOpts
     }
 
-    internal fun addBrandOpts(brandOpts: List<BrandOpts>) {
+    internal fun addBrandOpts(brandOpts: Array<String>) {
         brandOptsData = brandOpts
+    }
+
+    internal fun brandClickCallback(callback: ItemClickListener<String?>) {
+        brandItemClickListener = callback
     }
 
 
@@ -91,7 +94,7 @@ class FilterAdapter :
             (holder as CategoryOptsVH).bind(getItem(position), categoryOptsData)
         }
         if (getItemViewType(position) == BRAND_VIEW) {
-            (holder as BrandOptsVH).bind(getItem(position), brandOptsData)
+            (holder as BrandOptsVH).bind(getItem(position), brandOptsData, brandItemClickListener)
         }
     }
 }
@@ -110,42 +113,47 @@ internal class PriceRangeVH(itemView: View) : RecyclerView.ViewHolder(itemView) 
 internal class ColorsVH(itemView: View) : RecyclerView.ViewHolder(itemView) {
     fun bind(
         item: FilterOpts?,
-        colorData: List<Int>?
+        colorData: Array<Int>
     ) {
 
         with(itemView) {
             tv_item_1.text = item?.title
+
+            applyColorPalette(colorData)
         }
 
+    }
+
+    private fun View.applyColorPalette(colorData: Array<Int>) {
+        for (i in colorData.indices) {
+            val imageView = LayoutInflater.from(context)
+                .inflate(R.layout.circular_img, color_group, false) as ImageView
+            imageView.setPadding(5, 0, 5, 0)
+            val colorDrawable = ColorDrawable(colorData[i])
+            GlideApp.with(context).load(colorDrawable).circleCrop().into(imageView)
+            color_group.addView(imageView)
+        }
     }
 }
 
 internal class SizesVH(itemView: View) : RecyclerView.ViewHolder(itemView) {
     fun bind(
         item: FilterOpts?,
-        sizesData: List<String>
+        sizesData: Array<String>
     ) {
-        val params = LinearLayout.LayoutParams(
-            ViewGroup.LayoutParams.WRAP_CONTENT,
-            ViewGroup.LayoutParams.WRAP_CONTENT
-        )
-        params.setMargins(5, 0, 5, 0)
-
-
         with(itemView) {
             tv_item_1.text = item?.title
-            applySizesChips(sizesData, params)
+            applySizesChips(sizesData)
+
         }
     }
 
     private fun View.applySizesChips(
-        sizesData: List<String>,
-        params: LinearLayout.LayoutParams
+        sizesData: Array<String>
     ) {
         for (i in sizesData.indices) {
-            val chip = Chip(context)
-            chip.gravity = Gravity.CENTER
-            chip.layoutParams = params
+            val chip = LayoutInflater.from(context)
+                .inflate(R.layout.chip_single, chip_group, false) as Chip
             chip.text = sizesData[i]
             chip_group.addView(chip)
         }
@@ -155,33 +163,24 @@ internal class SizesVH(itemView: View) : RecyclerView.ViewHolder(itemView) {
 internal class CategoryOptsVH(itemView: View) : RecyclerView.ViewHolder(itemView) {
     fun bind(
         item: FilterOpts?,
-        categoryOptsData: List<CategoryOpts>
+        categoryOptsData: Array<String>
     ) {
-        val params = LinearLayout.LayoutParams(
-            ViewGroup.LayoutParams.WRAP_CONTENT,
-            ViewGroup.LayoutParams.WRAP_CONTENT
-        )
-        params.setMargins(5, 0, 5, 0)
-
-
         with(itemView) {
             tv_item_1.text = item?.title
 
-            applyCategoryChips(categoryOptsData, params)
+            applyCategoryChips(categoryOptsData)
 
         }
 
     }
 
     private fun View.applyCategoryChips(
-        categoryOptsData: List<CategoryOpts>,
-        params: LinearLayout.LayoutParams
+        categoryOptsData: Array<String>
     ) {
         for (i in categoryOptsData.indices) {
-            val chip = Chip(context)
-            chip.gravity = Gravity.CENTER
-            chip.layoutParams = params
-            chip.text = categoryOptsData[i].title
+            val chip = LayoutInflater.from(context)
+                .inflate(R.layout.chip_single, chip_group, false) as Chip
+            chip.text = categoryOptsData[i]
             chip_group.addView(chip)
         }
     }
@@ -190,15 +189,18 @@ internal class CategoryOptsVH(itemView: View) : RecyclerView.ViewHolder(itemView
 internal class BrandOptsVH(itemView: View) : RecyclerView.ViewHolder(itemView) {
     fun bind(
         item: FilterOpts?,
-        brandOptsData: List<BrandOpts>
+        brandOptsData: Array<String>,
+        brandItemClickListener: ItemClickListener<String?>?
     ) {
         val sb = StringBuilder()
         brandOptsData.forEach { brand ->
-            sb.append("${brand.title},")
+            sb.append("$brand,")
         }
         with(itemView) {
             tv_item_1.text = item?.title
             tv_item_2.text = sb
+            btn_next
+                .setOnClickListener { brandItemClickListener?.onClick(item?.title) }
         }
     }
 }

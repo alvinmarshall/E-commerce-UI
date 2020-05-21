@@ -16,6 +16,7 @@ import com.cheise_proj.e_commerce.R
 import com.cheise_proj.e_commerce.adapter.VerticalProductAdapter
 import com.cheise_proj.e_commerce.model.Category
 import com.cheise_proj.e_commerce.ui.BaseFragment
+import com.cheise_proj.e_commerce.ui.modal.ModalSizeFragment
 import com.cheise_proj.e_commerce.utils.ClickOption
 import com.cheise_proj.e_commerce.utils.DELAY_MILL
 import com.cheise_proj.e_commerce.utils.ItemClickListener
@@ -53,7 +54,7 @@ class MainFragment : BaseFragment() {
         viewModel = ViewModelProvider(this, factory)[MainViewModel::class.java]
         initRecyclerView()
         viewModel.getProductCategories()
-        handler.postDelayed({subscribeObserver()}, DELAY_MILL)
+        handler.postDelayed({ subscribeObserver() }, DELAY_MILL)
     }
 
     private fun subscribeObserver() {
@@ -62,11 +63,11 @@ class MainFragment : BaseFragment() {
     }
 
     private fun showProgress(status: Boolean?) {
-      status?.let { loading->
-          if (!loading){
-              progressBar.visibility = View.GONE
-          }
-      }
+        status?.let { loading ->
+            if (!loading) {
+                progressBar.visibility = View.GONE
+            }
+        }
     }
 
     private fun loadProductCategory(data: List<Category>?) {
@@ -86,11 +87,21 @@ class MainFragment : BaseFragment() {
                     }
                 }
             })
+            setHorizontalItemClickCallback(object : ItemClickListener<String?> {
+                override fun onClick(data: String?) {
+                    openSizeOptionModal()
+                }
+            })
         }
         recycler_view.apply {
             hasFixedSize()
             layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
         }
+    }
+
+    private fun openSizeOptionModal() {
+        val modal = ModalSizeFragment.newInstance()
+        modal.show(childFragmentManager,ModalSizeFragment.MODAL_SIZE_TAG)
     }
 
 

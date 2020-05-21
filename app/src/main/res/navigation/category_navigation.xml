@@ -30,7 +30,11 @@
         android:id="@+id/categoryFilterFragment"
         android:name="com.cheise_proj.e_commerce.ui.category.ui.CategoryFilterFragment"
         android:label="Filters"
-        tools:layout="@layout/fragment_category_filter" />
+        tools:layout="@layout/fragment_category_filter" >
+        <action
+            android:id="@+id/action_categoryFilterFragment_to_brandFragment"
+            app:destination="@id/brandFragment" />
+    </fragment>
     <fragment
         android:id="@+id/categoriesFragment"
         android:name="com.cheise_proj.e_commerce.ui.category.ui.CategoriesFragment"
@@ -40,4 +44,9 @@
             android:id="@+id/action_categoriesFragment_to_categoryInfoFragment2"
             app:destination="@id/categoryInfoFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/brandFragment"
+        android:name="com.cheise_proj.e_commerce.ui.category.ui.BrandFragment"
+        android:label="Brand"
+        tools:layout="@layout/fragment_brand" />
 </navigation>

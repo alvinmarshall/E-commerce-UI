@@ -4,10 +4,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
-import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.cheise_proj.e_commerce.R
 import com.cheise_proj.e_commerce.di.module.glide.GlideApp
 import com.cheise_proj.e_commerce.model.Product
@@ -18,7 +16,7 @@ class HorizontalProductAdapter :
     ListAdapter<Product, HorizontalProductAdapter.ProductVh>(ProductDiff()) {
     private var itemClickListener: ItemClickListener<String?>? = null
 
-    fun setItemCallback(callback: ItemClickListener<String?>) {
+    fun setItemCallback(callback: ItemClickListener<String?>?) {
         itemClickListener = callback
     }
 

@@ -3,24 +3,43 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:padding="16dp"
     android:layout_height="match_parent"
-    tools:context=".ui.category.ui.CategoryFilterFragment">
+    tools:context=".ui.category.ui.BrandFragment">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler_view"
+   <com.google.android.material.card.MaterialCardView
+       android:layout_width="match_parent"
+       android:id="@+id/card_container"
+       app:layout_constraintBottom_toTopOf="@id/list_view"
+       app:layout_constraintTop_toTopOf="parent"
+       app:cardUseCompatPadding="true"
+       app:cardCornerRadius="16dp"
+       android:layout_height="wrap_content">
+
+       <SearchView
+           android:id="@+id/search_bar"
+           android:layout_width="match_parent"
+           android:queryHint="search"
+           android:layout_height="wrap_content"/>
+   </com.google.android.material.card.MaterialCardView>
+
+    <ListView
+        android:id="@+id/list_view"
+        android:layout_marginTop="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/btn_discard"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:listitem="@layout/chip_items" />
+        android:choiceMode="multipleChoice"
+        tools:listitem="@layout/chip_items"
+        app:layout_constraintTop_toBottomOf="@id/card_container" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_discard"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
         android:text="@string/label_discard"
         app:cornerRadius="20dp"
+        android:layout_marginStart="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@id/btn_apply"
         app:layout_constraintStart_toStartOf="parent" />
@@ -29,11 +48,12 @@
         android:id="@+id/btn_apply"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
         android:text="@string/label_apply"
         app:cornerRadius="20dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/btn_discard" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

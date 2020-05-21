@@ -1,15 +1,12 @@
 package com.cheise_proj.e_commerce.ui.modal
 
-import android.content.Context
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
-import android.widget.TextView
-
+import androidx.fragment.app.Fragment
 import com.cheise_proj.e_commerce.R
 import com.cheise_proj.e_commerce.utils.ItemClickListener
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment

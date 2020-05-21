@@ -1,18 +1,16 @@
 package com.cheise_proj.e_commerce.ui.category.ui
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.cheise_proj.e_commerce.R
 import com.cheise_proj.e_commerce.adapter.FilterAdapter
 import com.cheise_proj.e_commerce.data.service.FilterService
-import com.cheise_proj.e_commerce.model.BrandOpts
-import com.cheise_proj.e_commerce.model.CategoryOpts
 import com.cheise_proj.e_commerce.model.FilterOpts
-import com.cheise_proj.e_commerce.model.PriceRange
 import com.cheise_proj.e_commerce.utils.*
 import kotlinx.android.synthetic.main.fragment_category_filter.*
 
@@ -37,6 +35,12 @@ class CategoryFilterFragment : Fragment() {
             addSizesOpts(FilterService.getSizesOpts())
             addCategoryOpts(FilterService.getCategoryOpts())
             addBrandOpts(FilterService.getBrandOpts())
+            addColorOpts(FilterService.getColorOpts(requireContext()))
+            brandClickCallback(object : ItemClickListener<String?> {
+                override fun onClick(data: String?) {
+                    navigateToBrandPage()
+                }
+            })
         }
         recycler_view.apply {
             hasFixedSize()
@@ -63,6 +67,12 @@ class CategoryFilterFragment : Fragment() {
         adapter.submitList(filterOpts)
         recycler_view.adapter = adapter
 
+    }
+
+    private fun navigateToBrandPage() {
+        val action =
+            CategoryFilterFragmentDirections.actionCategoryFilterFragmentToBrandFragment()
+        findNavController().navigate(action)
     }
 
     override fun onDestroyView() {

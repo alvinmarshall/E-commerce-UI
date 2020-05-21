@@ -13,7 +13,7 @@
         android:padding="16dp"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         app:layout_constraintTop_toTopOf="parent"
-        tools:text="TextView" />
+        tools:text="@tools:sample/full_names" />
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/card_container"

@@ -4,4 +4,11 @@
     <color name="colorPrimaryDark">#725b53</color>
     <color name="colorAccent">#725b53</color>
     <color name="colorSecondary">#DB3022</color>
+
+    //color palette
+    <color name="color_1">#040101</color>
+    <color name="color_2">#F6F6F6</color>
+    <color name="color_3">#B82222</color>
+    <color name="color_4">#BEA9A9</color>
+    <color name="color_5">#E2BB8D</color>
 </resources>

@@ -1,7 +1,8 @@
 package com.cheise_proj.e_commerce.data.db.entity
 
-import androidx.room.*
-import androidx.room.ForeignKey.CASCADE
+import androidx.room.Entity
+import androidx.room.Ignore
+import androidx.room.PrimaryKey
 import com.cheise_proj.e_commerce.model.Product
 
 @Entity(

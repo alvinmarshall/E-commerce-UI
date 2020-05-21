@@ -3,15 +3,11 @@ package com.cheise_proj.e_commerce.adapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.LinearLayout
-import android.widget.Toast
-import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.cheise_proj.e_commerce.R
 import com.cheise_proj.e_commerce.model.Category
-import com.cheise_proj.e_commerce.model.Product
 import com.cheise_proj.e_commerce.utils.ClickOption
 import com.cheise_proj.e_commerce.utils.ItemClickListener
 import kotlinx.android.synthetic.main.list_vertical_product.view.*
@@ -19,9 +15,15 @@ import kotlinx.android.synthetic.main.list_vertical_product.view.*
 class VerticalProductAdapter :
     ListAdapter<Category, VerticalProductAdapter.ProductCategoryVH>(CategoryDiff()) {
     private var itemClickListener: ItemClickListener<Pair<Category?, ClickOption>>? = null
+    private var horizontalItemClickListener: ItemClickListener<String?>? = null
+
 
     internal fun setItemClickCallback(callback: ItemClickListener<Pair<Category?, ClickOption>>) {
         itemClickListener = callback
+    }
+
+    internal fun setHorizontalItemClickCallback(callback: ItemClickListener<String?>) {
+        horizontalItemClickListener = callback
     }
 
 
@@ -33,7 +35,7 @@ class VerticalProductAdapter :
     }
 
     override fun onBindViewHolder(holder: ProductCategoryVH, position: Int) {
-        holder.bind(getItem(position), itemClickListener)
+        holder.bind(getItem(position), itemClickListener, horizontalItemClickListener)
     }
 
     class ProductCategoryVH(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -41,9 +43,10 @@ class VerticalProductAdapter :
 
         fun bind(
             item: Category?,
-            itemClickListener: ItemClickListener<Pair<Category?, ClickOption>>?
+            itemClickListener: ItemClickListener<Pair<Category?, ClickOption>>?,
+            horizontalItemClickListener: ItemClickListener<String?>?
         ) {
-            applyAdapter(item)
+            applyAdapter(item, horizontalItemClickListener)
 
             with(itemView) {
                 tv_header.text = item?.categoryName
@@ -63,13 +66,12 @@ class VerticalProductAdapter :
 
         }
 
-        private fun applyAdapter(item: Category?) {
+        private fun applyAdapter(
+            item: Category?,
+            horizontalItemClickListener: ItemClickListener<String?>?
+        ) {
             horizontalAdapter.submitList(item?.product)
-            horizontalAdapter.setItemCallback(object : ItemClickListener<String?> {
-                override fun onClick(data: String?) {
-                    Toast.makeText(itemView.context, data, Toast.LENGTH_SHORT).show()
-                }
-            })
+            horizontalAdapter.setItemCallback(horizontalItemClickListener)
         }
 
         private fun View.initRecyclerView() {
@@ -79,6 +81,7 @@ class VerticalProductAdapter :
                 adapter = horizontalAdapter
             }
         }
+
     }
 }
 
