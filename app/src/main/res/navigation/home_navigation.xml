@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_navigation"
+    app:startDestination="@id/productMainFragment">
+
+    <fragment
+        android:id="@+id/myBagFragment"
+        android:name="com.cheise_proj.e_commerce.ui.bag.MyBagFragment"
+        android:label="fragment_my_bag"
+        tools:layout="@layout/fragment_my_bag" />
+    <fragment
+        android:id="@+id/favoriteFragment"
+        android:name="com.cheise_proj.e_commerce.ui.favorite.FavoriteFragment"
+        android:label="fragment_favorite"
+        tools:layout="@layout/fragment_favorite" />
+    <fragment
+        android:id="@+id/categoryMainFragment"
+        android:name="com.cheise_proj.e_commerce.ui.category.ui.CategoryMainFragment"
+        android:label="fragment_category_main"
+        tools:layout="@layout/fragment_category_main" />
+    <fragment
+        android:id="@+id/productMainFragment"
+        android:name="com.cheise_proj.e_commerce.ui.product.ProductMainFragment"
+        android:label="fragment_product_main"
+        tools:layout="@layout/fragment_product_main" />
+</navigation>

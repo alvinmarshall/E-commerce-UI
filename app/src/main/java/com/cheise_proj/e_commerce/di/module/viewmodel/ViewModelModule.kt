@@ -5,7 +5,8 @@ import androidx.lifecycle.ViewModelProvider
 import com.cheise_proj.e_commerce.di.key.ViewModelKey
 import com.cheise_proj.e_commerce.factory.ViewModelFactory
 import com.cheise_proj.e_commerce.ui.category.CategoryViewModel
-import com.cheise_proj.e_commerce.ui.main.MainViewModel
+import com.cheise_proj.e_commerce.ui.product.ProductViewModel
+import com.cheise_proj.e_commerce.ui.review.ReviewViewModel
 import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap
@@ -26,8 +27,13 @@ class ViewModelModule {
 
         @Binds
         @IntoMap
-        @ViewModelKey(MainViewModel::class)
-        fun bindMainViewModel(mainViewModel: MainViewModel): ViewModel
+        @ViewModelKey(ProductViewModel::class)
+        fun bindProductViewModel(productViewModel: ProductViewModel): ViewModel
+
+        @Binds
+        @IntoMap
+        @ViewModelKey(ReviewViewModel::class)
+        fun bindReviewViewModel(reviewViewModel: ReviewViewModel): ViewModel
 
     }
 

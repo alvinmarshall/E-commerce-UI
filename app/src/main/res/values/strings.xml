@@ -30,18 +30,53 @@
     <string name="label_signup_with_social">Or sign up with social account</string>
     <string name="label_signup">SignUp</string>
     <string name="label_email">Email</string>
+
     <string name="label_name">Name</string>
     <string name="label_sign_up">Sign up</string>
     <string name="label_view_all">View all</string>
 
-    <string name="bracket_text_placeholder">( %1$d )</string>
-    <string name="percentage_text_placeholder">%1$d %2$s </string>
-    <string name="label_choose_category">Choose a category</string>
-    <string name="label_sort_by">Sort by</string>
-    <string name="label_apply">apply</string>
-    <string name="label_discard">discard</string>
+    <!--    Product Detail-->
+    <string name="label_add_to_cart">add to cart</string>
+    <string name="label_shipping_info">Shipping info</string>
+
+    <string name="label_support">Support</string>
+    <string name="label_color">Color</string>
+    <string name="label_size">Size</string>
+
+    <!--    Cart-->
+
+    <!--    Modal-->
+    <string name="label_select_color">Select Color</string>
     <string name="label_select_size">Select size</string>
     <string name="label_size_info">Size info</string>
-    <string name="label_add_to_cart">add to cart</string>
+    <string name="label_sort_by">Sort by</string>
+
+    <!--    Review-->
+    <string name="label_like_this">You can also like this</string>
+    <string name="label_send_review">Send review</string>
+    <string name="label_your_review">Your review</string>
+
+    <string name="label_review_sub_header">Please share your \nopinion about the product</string>
+    <string name="label_review_header">What is your rate ?</string>
+
+    <!--    Placeholder-->
+    <string name="bracket_text_placeholder">( %1$d )</string>
+    <string name="percentage_text_placeholder">%1$d %2$s </string>
+    <string name="money_placeholder">$%1$s </string>
+    <string name="reviews_placeholder">%1$d review(s)</string>
+    <string name="ratings_placeholder">%1$d rating(s)</string>
+
+    <!--    Filter-->
+    <string name="label_apply">apply</string>
+    <string name="label_discard">discard</string>
+
+    <string name="label_choose_category">Choose a category</string>
+    <string name="label_share">Share</string>
+    <string name="label_with_photo">with photo</string>
+    <string name="label_write_a_review">Write a review</string>
+
+    <!--    FILE AUTHORITY-->
+    <string name="file_provider_authority" translatable="false">%1$s.FileProvider</string>
+
 
 </resources>

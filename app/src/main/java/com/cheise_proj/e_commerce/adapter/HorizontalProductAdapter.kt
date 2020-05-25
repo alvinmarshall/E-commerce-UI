@@ -43,7 +43,7 @@ class HorizontalProductAdapter :
                 tv_item_2.text = item?.productName
                 tv_item_3.text = item?.unitPrice
                 tv_item_4.text = item?.unitPrice
-                this.setOnClickListener { itemClickListener?.onClick(item?.productName) }
+                this.setOnClickListener { itemClickListener?.onClick(item?.productID) }
                 applyFavorite()
             }
         }

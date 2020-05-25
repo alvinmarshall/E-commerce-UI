@@ -13,7 +13,7 @@ interface ProductDao {
     suspend fun getProducts(): List<ProductEntity>
 
     @Query("SELECT * FROM product WHERE productID = :identifier")
-    suspend fun getProduct(identifier: String): ProductEntity
+    suspend fun getProduct(identifier: String? = ""): ProductEntity
 
     @Transaction
     @Query("SELECT * FROM product")

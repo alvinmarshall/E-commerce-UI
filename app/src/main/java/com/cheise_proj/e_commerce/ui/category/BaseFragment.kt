@@ -10,8 +10,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.cheise_proj.e_commerce.factory.ViewModelFactory
 import dagger.android.support.DaggerFragment
 import javax.inject.Inject
-
-abstract class BaseFragment<VM : ViewModel> : DaggerFragment() {
+ abstract class BaseFragment<VM : ViewModel> : DaggerFragment() {
     @Inject
     lateinit var factory: ViewModelFactory
     protected lateinit var viewModel: VM

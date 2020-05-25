@@ -108,6 +108,9 @@ buildscript {
 
         //range seekbar
         rangeseekbar_version = '1.0.0'
+
+        //rating
+        ratingreviews_version = '1.2.0'
     }
 
         repositories {
@@ -130,7 +133,7 @@ allprojects {
     repositories {
         google()
         jcenter()
-        
+
     }
 }
 

@@ -5,6 +5,7 @@ import androidx.room.Room
 import com.cheise_proj.e_commerce.data.db.LocalSource
 import com.cheise_proj.e_commerce.data.db.dao.CategoryDao
 import com.cheise_proj.e_commerce.data.db.dao.ProductDao
+import com.cheise_proj.e_commerce.data.db.dao.ReviewDao
 import com.cheise_proj.e_commerce.utils.DATABASE_NAME
 import dagger.Module
 import dagger.Provides
@@ -31,4 +32,8 @@ class RoomModule {
     @Singleton
     @Provides
     fun provideCategoryDao(localSource: LocalSource): CategoryDao = localSource.categoryDao()
+
+    @Singleton
+    @Provides
+    fun provideReviewDao(localSource: LocalSource): ReviewDao = localSource.reviewDao()
 }

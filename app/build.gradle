@@ -135,7 +135,6 @@ dependencies {
     //range seekbar
     implementation "com.rizlee.view:rangeseekbar:$rangeseekbar_version"
 
-//    implementation 'com.github.Inconnu08:android-ratingreviews:1.2.0'
 
     //room
     kapt "androidx.room:room-compiler:$room_version"

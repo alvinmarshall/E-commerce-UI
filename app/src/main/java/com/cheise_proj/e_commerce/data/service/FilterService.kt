@@ -41,7 +41,7 @@ object FilterService {
             ContextCompat.getColor(context, R.color.color_2),
             ContextCompat.getColor(context, R.color.color_3),
             ContextCompat.getColor(context, R.color.color_4),
-            ContextCompat.getColor(context, R.color.color_4)
+            ContextCompat.getColor(context, R.color.color_5)
         )
     }
 

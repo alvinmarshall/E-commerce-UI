@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cart_navigation"
+    app:startDestination="@id/cartFragment">
+
+    <fragment
+        android:id="@+id/cartFragment"
+        android:name="com.cheise_proj.e_commerce.ui.bag.CartFragment"
+        android:label="fragment_cart"
+        tools:layout="@layout/fragment_cart" />
+    <fragment
+        android:id="@+id/checkoutFragment"
+        android:name="com.cheise_proj.e_commerce.ui.bag.CheckoutFragment"
+        android:label="fragment_checkout"
+        tools:layout="@layout/fragment_checkout" />
+    <fragment
+        android:id="@+id/createAddressFragment"
+        android:name="com.cheise_proj.e_commerce.ui.bag.CreateAddressFragment"
+        android:label="fragment_create_address"
+        tools:layout="@layout/fragment_create_address" />
+    <fragment
+        android:id="@+id/addressFragment"
+        android:name="com.cheise_proj.e_commerce.ui.bag.AddressFragment"
+        android:label="fragment_address"
+        tools:layout="@layout/fragment_address" />
+    <fragment
+        android:id="@+id/successFragment"
+        android:name="com.cheise_proj.e_commerce.ui.bag.SuccessFragment"
+        android:label="fragment_success"
+        tools:layout="@layout/fragment_success" />
+    <fragment
+        android:id="@+id/success2Fragment"
+        android:name="com.cheise_proj.e_commerce.ui.bag.Success2Fragment"
+        android:label="fragment_success2"
+        tools:layout="@layout/fragment_success2" />
+    <fragment
+        android:id="@+id/paymentCardFragment"
+        android:name="com.cheise_proj.e_commerce.ui.bag.PaymentCardFragment"
+        android:label="fragment_payment_card2"
+        tools:layout="@layout/fragment_payment_card" />
+</navigation>

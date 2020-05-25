@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/product_navigation"
+    app:startDestination="@id/productFragment">
+    <fragment
+        android:id="@+id/productFragment"
+        android:name="com.cheise_proj.e_commerce.ui.product.ProductFragment"
+        android:label="ProductFragment" >
+        <action
+            android:id="@+id/action_productFragment_to_product2Fragment"
+            app:destination="@id/product2Fragment" />
+        <action
+            android:id="@+id/action_productFragment_to_productDetailFragment"
+            app:destination="@id/productDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/product2Fragment"
+        android:name="com.cheise_proj.e_commerce.ui.product.Product2Fragment"
+        android:label="Product2Fragment" >
+        <argument
+            android:name="pCategoryImage"
+            app:argType="string"
+            app:nullable="true"
+            android:defaultValue="@null" />
+    </fragment>
+    <fragment
+        android:id="@+id/productDetailFragment"
+        android:name="com.cheise_proj.e_commerce.ui.product.ProductDetailFragment"
+        android:label="Detail"
+        tools:layout="@layout/fragment_product_detail">
+        <argument
+            android:name="product_id"
+            android:defaultValue="@null"
+            app:argType="string"
+            app:nullable="true" />
+        <action
+            android:id="@+id/action_productDetailFragment_to_ratingFragment"
+            app:destination="@id/ratingFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/ratingFragment"
+        android:name="com.cheise_proj.e_commerce.ui.review.RatingFragment"
+        android:label="Rating&amp;Reviews"
+        tools:layout="@layout/fragment_rating" >
+        <argument
+            android:name="product_id"
+            app:argType="string"
+            app:nullable="true"
+            android:defaultValue="@null" />
+    </fragment>
+</navigation>
