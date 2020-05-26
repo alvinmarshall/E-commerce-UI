@@ -16,6 +16,7 @@ import com.cheise_proj.e_commerce.adapter.VerticalProductAdapter
 import com.cheise_proj.e_commerce.model.Category
 import com.cheise_proj.e_commerce.utils.ClickOption
 import com.cheise_proj.e_commerce.utils.DELAY_MILL
+import com.cheise_proj.e_commerce.utils.HorizontalAdapterOption
 import com.cheise_proj.e_commerce.utils.ItemClickListener
 import kotlinx.android.synthetic.main.fragment_product.*
 import kotlinx.android.synthetic.main.toolbar_collapse_with_button.*
@@ -83,10 +84,18 @@ class ProductFragment : BaseFragment<ProductViewModel>() {
                     }
                 }
             })
-            setHorizontalItemClickCallback(object : ItemClickListener<String?> {
-                override fun onClick(data: String?) {
-                    navigateToProductDetail(data)
+            setHorizontalItemClickCallback(object :
+                ItemClickListener<Pair<HorizontalAdapterOption, String?>> {
+                override fun onClick(data: Pair<HorizontalAdapterOption, String?>) {
+                    when (data.first) {
+                        HorizontalAdapterOption.VIEW -> navigateToProductDetail(data.second)
+
+                        HorizontalAdapterOption.FAVORITE -> viewModel.addToFavorite(
+                            data.second ?: ""
+                        )
+                    }
                 }
+
             })
         }
         recycler_view.apply {

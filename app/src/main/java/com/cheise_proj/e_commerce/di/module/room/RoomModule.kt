@@ -3,9 +3,7 @@ package com.cheise_proj.e_commerce.di.module.room
 import android.content.Context
 import androidx.room.Room
 import com.cheise_proj.e_commerce.data.db.LocalSource
-import com.cheise_proj.e_commerce.data.db.dao.CategoryDao
-import com.cheise_proj.e_commerce.data.db.dao.ProductDao
-import com.cheise_proj.e_commerce.data.db.dao.ReviewDao
+import com.cheise_proj.e_commerce.data.db.dao.*
 import com.cheise_proj.e_commerce.utils.DATABASE_NAME
 import dagger.Module
 import dagger.Provides
@@ -36,4 +34,13 @@ class RoomModule {
     @Singleton
     @Provides
     fun provideReviewDao(localSource: LocalSource): ReviewDao = localSource.reviewDao()
+
+    @Singleton
+    @Provides
+    fun provideFavoriteDao(localSource: LocalSource): FavoriteDao = localSource.favoriteDao()
+
+    @Singleton
+    @Provides
+    fun provideCartDao(localSource: LocalSource): CartDao = localSource.cartDao()
+
 }

@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/cartFragment"
         android:name="com.cheise_proj.e_commerce.ui.bag.CartFragment"
-        android:label="fragment_cart"
+        android:label="My Bag"
         tools:layout="@layout/fragment_cart" />
     <fragment
         android:id="@+id/checkoutFragment"

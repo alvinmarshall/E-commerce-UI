@@ -37,13 +37,22 @@
             app:layout_constraintTop_toTopOf="@id/img_item"
             tools:text="-20%" />
 
+        <TextView
+            android:id="@+id/btn_close"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="4dp"
+            android:drawableStart="@drawable/ic_close_black_24dp"
+            android:padding="5dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/fab_fav"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:backgroundTint="@android:color/white"
             app:fabSize="mini"
-            app:backgroundTintMode="add"
             app:layout_constraintBottom_toBottomOf="@id/img_item"
             app:layout_constraintEnd_toEndOf="@id/img_item"
             app:layout_constraintTop_toBottomOf="@id/img_item"
@@ -95,23 +104,42 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="5dp"
-            android:foreground="@drawable/tv_strike_through_bg"
-            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_item_2"
-            tools:text="15$" />
+            tools:text="Color: Orange" />
 
         <TextView
             android:id="@+id/tv_item_4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="5dp"
+            android:layout_marginStart="32dp"
             android:layout_marginTop="5dp"
-            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-            android:textColor="@android:color/holo_red_dark"
             app:layout_constraintStart_toEndOf="@id/tv_item_3"
             app:layout_constraintTop_toBottomOf="@id/tv_item_2"
-            tools:text="32$" />
+            tools:text="Size: L" />
+
+        <TextView
+            android:id="@+id/tv_item_5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="4dp"
+            android:background="@drawable/tv_strike_through_bg"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_item_3"
+            tools:text="15$" />
+
+        <TextView
+            android:id="@+id/tv_item_6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="4dp"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            app:layout_constraintStart_toEndOf="@id/tv_item_5"
+            app:layout_constraintTop_toBottomOf="@id/tv_item_3"
+            tools:text="15$" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </com.google.android.material.card.MaterialCardView>

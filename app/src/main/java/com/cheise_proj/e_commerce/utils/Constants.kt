@@ -11,6 +11,18 @@ enum class CatalogOption {
     VIEW, FAVORITE
 }
 
+enum class HorizontalAdapterOption {
+    VIEW, FAVORITE
+}
+
+enum class FavoriteOption {
+    CLOSE, CART
+}
+
+enum class CartOptions {
+    INCREASE, DECREASE, FAVORITE, REMOVE
+}
+
 const val PRICE_VIEW = 0
 const val COLORS_VIEW = 1
 const val SIZE_VIEW = 2

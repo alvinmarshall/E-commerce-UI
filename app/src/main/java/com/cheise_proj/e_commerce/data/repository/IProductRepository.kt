@@ -10,6 +10,6 @@ interface IProductRepository {
     suspend fun getProductCategories(): Result<List<Category>>
     suspend fun getCategories(): Result<List<Category>>
     suspend fun getProduct(identifier: String?): Result<Product>
-    suspend fun getReviews():Result<List<Reviews>>
-    suspend fun getReviewsById(identifier: String?):Result<List<Reviews>>
+    suspend fun getReviews(): Result<List<Reviews>>
+    suspend fun getReviewsById(identifier: String?): Result<List<Reviews>>
 }

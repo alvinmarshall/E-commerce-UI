@@ -14,7 +14,7 @@
         android:icon="@drawable/ic_mybag"
         android:title="@string/label_bag" />
     <item
-        android:id="@+id/favoriteFragment"
+        android:id="@+id/favoriteMainFragment"
         android:icon="@drawable/ic_favorite"
         android:title="@string/label_favorite" />
     <item

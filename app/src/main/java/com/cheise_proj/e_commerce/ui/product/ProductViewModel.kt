@@ -3,6 +3,8 @@ package com.cheise_proj.e_commerce.ui.product
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
+import com.cheise_proj.e_commerce.data.db.entity.FavoriteEntity
+import com.cheise_proj.e_commerce.data.repository.FavoriteRepository
 import com.cheise_proj.e_commerce.data.repository.IProductRepository
 import com.cheise_proj.e_commerce.di.IODispatcher
 import com.cheise_proj.e_commerce.extension.onError
@@ -17,6 +19,7 @@ import javax.inject.Inject
 
 class ProductViewModel @Inject constructor(
     private val productRepository: IProductRepository,
+    private val favoriteRepository: FavoriteRepository,
     @IODispatcher private val dispatcher: CoroutineDispatcher
 ) :
     BaseViewModel() {
@@ -26,8 +29,7 @@ class ProductViewModel @Inject constructor(
 
     val productCategory: LiveData<List<Category>> = _productCategory
     val product: LiveData<Product> = _product
-    val products: LiveData<List<Product>>  = _products
-
+    val products: LiveData<List<Product>> = _products
 
 
     fun getProduct(identifier: String?) {
@@ -92,6 +94,14 @@ class ProductViewModel @Inject constructor(
                     _loadingState.postValue(false)
                     _errorMsg.postValue(error.message)
                 }
+        }
+    }
+
+    fun addToFavorite(identifier: String) {
+        viewModelScope.launch(dispatcher) {
+            val favoriteEntity = FavoriteEntity()
+            favoriteEntity.productId = identifier
+            favoriteRepository.addFavorite(favoriteEntity)
         }
     }
 

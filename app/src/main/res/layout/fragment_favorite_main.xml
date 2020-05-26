@@ -4,16 +4,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".ui.bag.MyBagFragment">
+    tools:context=".ui.favorite.FavoriteMainFragment">
 
     <fragment
-        android:id="@+id/nav_bag"
+        android:id="@+id/nav_fav"
         android:name="androidx.navigation.fragment.NavHostFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_constraintTop_toTopOf="parent"
         app:defaultNavHost="true"
-        app:navGraph="@navigation/cart_navigation"
+        app:navGraph="@navigation/favorite_navigation"
         tools:ignore="FragmentTagUsage" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>
