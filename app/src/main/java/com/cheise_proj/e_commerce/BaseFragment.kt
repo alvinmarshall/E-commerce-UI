@@ -10,6 +10,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.cheise_proj.e_commerce.factory.ViewModelFactory
+import com.google.android.material.snackbar.Snackbar
 import dagger.android.support.DaggerFragment
 import javax.inject.Inject
 
@@ -33,6 +34,10 @@ abstract class BaseFragment<VM : ViewModel> : DaggerFragment() {
         initToolbar()
         setHasOptionsMenu(true)
         viewModel = ViewModelProvider(this, factory)[getViewModel()]
+    }
+
+    protected fun showNoData(view: View) {
+        Snackbar.make(view, getString(R.string.no_data_msg), Snackbar.LENGTH_LONG).show()
     }
 
 

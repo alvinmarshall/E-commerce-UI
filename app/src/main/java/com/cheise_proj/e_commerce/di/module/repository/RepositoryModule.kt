@@ -16,5 +16,11 @@ class RepositoryModule {
 
         @Binds
         fun bindCartRepository(cartRepository: CartRepository): ICartRepository
+
+        @Binds
+        fun bindAddressRepository(addressRepository: AddressRepository): IAddressRepository
+
+        @Binds
+        fun bindCardRepository(cardRepository: CardRepository): ICardRepository
     }
 }

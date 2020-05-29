@@ -3,6 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:clickable="true"
+    android:focusable="true"
     app:cardCornerRadius="16dp"
     app:cardUseCompatPadding="true">
 
@@ -12,27 +14,27 @@
         android:layout_height="wrap_content">
 
         <TextView
-            android:id="@+id/btn_center_promo"
+            android:id="@+id/tv_promo_code"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="16dp"
             android:text="@string/label_enter_promo"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-            app:layout_constraintEnd_toStartOf="@+id/floatingActionButton"
+            app:layout_constraintEnd_toStartOf="@+id/fab_send"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/floatingActionButton"
+            android:id="@+id/fab_send"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_arrow_forward_black_24dp"
             android:tintMode="add"
             app:backgroundTint="#000000"
             app:fabSize="mini"
-            app:layout_constraintBottom_toBottomOf="@id/btn_center_promo"
-            app:layout_constraintEnd_toEndOf="@id/btn_center_promo"
-            app:layout_constraintTop_toTopOf="@id/btn_center_promo" />
+            app:layout_constraintBottom_toBottomOf="@id/tv_promo_code"
+            app:layout_constraintEnd_toEndOf="@id/tv_promo_code"
+            app:layout_constraintTop_toTopOf="@id/tv_promo_code" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </com.google.android.material.card.MaterialCardView>

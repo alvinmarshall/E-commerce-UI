@@ -7,7 +7,9 @@ import android.view.View
 import android.widget.TextView
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import com.cheise_proj.e_commerce.R
 import com.cheise_proj.e_commerce.factory.ViewModelFactory
+import com.google.android.material.snackbar.Snackbar
 import dagger.android.support.DaggerFragment
 import javax.inject.Inject
  abstract class BaseFragment<VM : ViewModel> : DaggerFragment() {
@@ -34,4 +36,8 @@ import javax.inject.Inject
         getHeaderTextView()?.text = getHeaderText()
         getSubHeaderTextView()?.text = getSubHeaderText()
     }
+
+     protected fun showNoData(view: View) {
+         Snackbar.make(view, getString(R.string.no_data_msg), Snackbar.LENGTH_LONG).show()
+     }
 }

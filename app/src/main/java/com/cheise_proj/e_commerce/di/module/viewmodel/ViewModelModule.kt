@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.cheise_proj.e_commerce.di.key.ViewModelKey
 import com.cheise_proj.e_commerce.factory.ViewModelFactory
 import com.cheise_proj.e_commerce.ui.bag.BagViewModel
+import com.cheise_proj.e_commerce.ui.bag.CheckoutViewModel
 import com.cheise_proj.e_commerce.ui.category.CategoryViewModel
 import com.cheise_proj.e_commerce.ui.favorite.FavoriteViewModel
 import com.cheise_proj.e_commerce.ui.product.ProductViewModel
@@ -46,6 +47,11 @@ class ViewModelModule {
         @IntoMap
         @ViewModelKey(BagViewModel::class)
         fun bindBagViewModel(bagViewModel: BagViewModel): ViewModel
+
+        @Binds
+        @IntoMap
+        @ViewModelKey(CheckoutViewModel::class)
+        fun bindCheckoutViewModel(checkoutViewModel: CheckoutViewModel): ViewModel
 
     }
 

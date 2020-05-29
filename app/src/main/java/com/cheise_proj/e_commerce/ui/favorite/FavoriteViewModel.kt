@@ -4,11 +4,10 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.cheise_proj.e_commerce.data.db.entity.CartEntity
-import com.cheise_proj.e_commerce.data.db.entity.FavoriteEntity
 import com.cheise_proj.e_commerce.data.db.entity.ProductWithFavorite
-import com.cheise_proj.e_commerce.data.repository.CartRepository
-import com.cheise_proj.e_commerce.data.repository.FavoriteRepository
-import com.cheise_proj.e_commerce.data.repository.ProductRepository
+import com.cheise_proj.e_commerce.data.repository.ICartRepository
+import com.cheise_proj.e_commerce.data.repository.IFavoriteRepository
+import com.cheise_proj.e_commerce.data.repository.IProductRepository
 import com.cheise_proj.e_commerce.di.IODispatcher
 import com.cheise_proj.e_commerce.extension.onError
 import com.cheise_proj.e_commerce.extension.onSuccess
@@ -21,9 +20,9 @@ import timber.log.Timber
 import javax.inject.Inject
 
 class FavoriteViewModel @Inject constructor(
-    private val favoriteRepository: FavoriteRepository,
-    private val productRepository: ProductRepository,
-    private val cartRepository: CartRepository,
+    private val favoriteRepository: IFavoriteRepository,
+    private val productRepository: IProductRepository,
+    private val cartRepository: ICartRepository,
     @IODispatcher private val dispatcher: CoroutineDispatcher
 ) :
     BaseViewModel() {

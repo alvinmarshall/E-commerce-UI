@@ -13,7 +13,9 @@ import com.cheise_proj.e_commerce.data.db.entity.*
         CategoryEntity::class,
         ReviewEntity::class,
         FavoriteEntity::class,
-        CartEntity::class
+        CartEntity::class,
+        AddressEntity::class,
+        CardEntity::class
     ],
     version = 1,
     exportSchema = false
@@ -26,4 +28,6 @@ abstract class LocalSource : RoomDatabase() {
     abstract fun reviewDao(): ReviewDao
     abstract fun favoriteDao(): FavoriteDao
     abstract fun cartDao(): CartDao
+    abstract fun addressDao(): AddressDao
+    abstract fun cardDao(): CardDao
 }

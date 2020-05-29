@@ -43,4 +43,12 @@ class RoomModule {
     @Provides
     fun provideCartDao(localSource: LocalSource): CartDao = localSource.cartDao()
 
+    @Singleton
+    @Provides
+    fun provideAddressDao(localSource: LocalSource): AddressDao = localSource.addressDao()
+
+    @Singleton
+    @Provides
+    fun provideCardDao(localSource: LocalSource): CardDao = localSource.cardDao()
+
 }

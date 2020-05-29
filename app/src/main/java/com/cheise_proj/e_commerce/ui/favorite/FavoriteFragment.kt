@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -111,24 +110,13 @@ class FavoriteFragment : BaseFragment<FavoriteViewModel>() {
 
     private fun loadFavorites(data: List<ProductWithFavorite>?) {
         if (data.isNullOrEmpty()) {
-            showNoDataAlert()
+           showNoData(root)
             return
         }
         adapter.submitList(data)
         recycler_view.adapter = adapter
     }
 
-    private fun showNoDataAlert() {
-        val alert = AlertDialog.Builder(requireContext())
-        alert.setTitle("No data alert")
-        alert.setMessage("Sorry, No favorites are available")
-        alert.setCancelable(false)
-        alert.setPositiveButton("ok") { dialog, _ ->
-            dialog.dismiss()
-            activity?.onBackPressed()
-        }
-        alert.show()
-    }
 
     private fun initRecyclerView() {
         recycler_view.apply {

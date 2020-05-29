@@ -6,8 +6,8 @@ import androidx.lifecycle.viewModelScope
 import com.cheise_proj.e_commerce.data.db.entity.CartEntity
 import com.cheise_proj.e_commerce.data.db.entity.FavoriteEntity
 import com.cheise_proj.e_commerce.data.db.entity.ProductWithCart
-import com.cheise_proj.e_commerce.data.repository.CartRepository
-import com.cheise_proj.e_commerce.data.repository.FavoriteRepository
+import com.cheise_proj.e_commerce.data.repository.ICartRepository
+import com.cheise_proj.e_commerce.data.repository.IFavoriteRepository
 import com.cheise_proj.e_commerce.di.IODispatcher
 import com.cheise_proj.e_commerce.ui.BaseViewModel
 import kotlinx.coroutines.CoroutineDispatcher
@@ -17,8 +17,8 @@ import timber.log.Timber
 import javax.inject.Inject
 
 class BagViewModel @Inject constructor(
-    private val cartRepository: CartRepository,
-    private val favoriteRepository: FavoriteRepository,
+    private val cartRepository: ICartRepository,
+    private val favoriteRepository: IFavoriteRepository,
     @IODispatcher private val dispatcher: CoroutineDispatcher
 ) :
     BaseViewModel() {

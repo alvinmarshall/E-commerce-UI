@@ -23,6 +23,15 @@ enum class CartOptions {
     INCREASE, DECREASE, FAVORITE, REMOVE
 }
 
+enum class CheckoutOption {
+    ADDRESS_CHANGE, PAYMENT_CHANGE
+}
+
+const val MASTER_CARD_LOGO_URL =
+    "https://toppng.com/uploads/preview/mastercard-logo-png-image-background-logo-mastercard-11563000929p7h8ctftya.png"
+const val VISA_CARD_LOGO_URL =
+    "https://img.favpng.com/6/18/12/credit-card-debit-card-mastercard-logo-visa-png-favpng-Dr8ZuXU7Db5sQ39iMeCh8ZxC8.jpg"
+
 const val PRICE_VIEW = 0
 const val COLORS_VIEW = 1
 const val SIZE_VIEW = 2

@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.cheise_proj.e_commerce.BaseFragment
 import com.cheise_proj.e_commerce.R
@@ -27,7 +28,7 @@ import org.jetbrains.anko.support.v4.toast
  */
 class CartFragment : BaseFragment<BagViewModel>() {
     private lateinit var adapter: CartAdapter
-
+    private var totalPrice = 0f
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -45,13 +46,25 @@ class CartFragment : BaseFragment<BagViewModel>() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        btn_center_promo.setOnClickListener { openPromoModal() }
+        tv_promo_code.setOnClickListener { openPromoModal() }
+        btn_checkout.setOnClickListener { navigateToCheckout() }
         initRecyclerView()
         configViewModel()
     }
 
+    private fun navigateToCheckout() {
+        val action = CartFragmentDirections.actionCartFragmentToCheckoutFragment(totalPrice.toString())
+        findNavController().navigate(action)
+    }
+
     private fun openPromoModal() {
         val modal = ModalPromoFragment.newInstance()
+        modal.setClickCallback(object : ItemClickListener<String> {
+            override fun onClick(data: String) {
+                tv_promo_code.text = data
+            }
+        })
+
         modal.show(childFragmentManager, ModalPromoFragment.MODAL_PROMO_TAG)
     }
 
@@ -132,7 +145,7 @@ class CartFragment : BaseFragment<BagViewModel>() {
     }
 
     private fun setTotal(data: List<ProductWithCart>?) {
-        var totalPrice = 0f
+
         data?.forEach {
             val price = it.productEntity?.unitPrice?.toFloat() ?: 0f
             val quantity = it.cartEntity?.quantity?.toFloat() ?: 1f

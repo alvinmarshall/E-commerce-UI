@@ -49,7 +49,7 @@
     <string name="label_enter_promo">Enter your promo code</string>
     <string name="label_total_amount">Total amount</string>
 
-    <string name="label_check_out">check out</string>
+    <string name="label_check_out">Check out</string>
     <string name="label_delete_from_the_list">Delete from the list</string>
     <string name="label_add_to_favorite">Add to favorite</string>
 
@@ -78,6 +78,7 @@
     <string name="ratings_placeholder">%1$d rating(s)</string>
     <string name="color_placeholder">Color: %1$s</string>
     <string name="size_placeholder">Size: %1$s</string>
+    <string name="full_address_placeholder">%1$s, %2$s, %3$s</string>
 
     <!--    Filter-->
     <string name="label_apply">apply</string>
@@ -90,6 +91,52 @@
 
     <!--    FILE AUTHORITY-->
     <string name="file_provider_authority" translatable="false">%1$s.FileProvider</string>
+
+    <!--    ADDRESS-->
+    <string name="label_change">Change</string>
+    <string name="label_edit">Edit</string>
+    <string name="label_use_default_address">Use as the shipping address</string>
+    <string name="label_save_address">save address</string>
+
+    <!--   CARD PAYMENT METHOD-->
+    <string name="label_full_name">Full name</string>
+    <string name="label_address">Address</string>
+    <string name="label_city">City</string>
+    <string name="label_state_province_region">State/Province/Region</string>
+    <string name="label_zip_code_postal_code">Zip Code (Postal Code)</string>
+    <string name="label_country">Country</string>
+
+    <string name="label_add_new_card">Add new card</string>
+    <string name="label_name_on_card">Name on card</string>
+    <string name="label_card_number">Card number</string>
+    <string name="label_expire_date">Expire Date</string>
+    <string name="label_cvv">CVV</string>
+
+    <string name="label_default_card">Use as default payment method</string>
+    <string name="label_expiry_date">Expiry Date</string>
+    <string name="label_card_holder_name">Card Holder Name</string>
+    <string name="label_your_payment_card">Your payment card</string>
+
+    <!--    SUCCESS-->
+    <string name="success1_sub_header">Your order will be delivered soon.\nThank you for choosing our app!</string>
+    <string name="label_success">Success</string>
+
+    <string name="label_continue_shopping">Continue shopping</string>
+    <string name="label_thanks_you_msg">Your order will be delivered soon.\nThank you for choosing our app!</string>
+    <string name="label_success2">Success!</string>
+
+
+    <!--    CHECKOUT-->
+    <string name="label_card_type">Card type</string>
+    <string name="label_add_card">add card</string>
+    <string name="label_order">Order:</string>
+    <string name="label_delivery">Delivery:</string>
+    <string name="label_summary">Summary:</string>
+    <string name="label_submit_order">submit order</string>
+
+
+
+    <string name="no_data_msg">No data available</string>
 
 
 </resources>
