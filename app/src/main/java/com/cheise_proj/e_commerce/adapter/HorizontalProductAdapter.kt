@@ -9,14 +9,15 @@ import androidx.recyclerview.widget.RecyclerView
 import com.cheise_proj.e_commerce.R
 import com.cheise_proj.e_commerce.di.module.glide.GlideApp
 import com.cheise_proj.e_commerce.model.Product
+import com.cheise_proj.e_commerce.utils.HorizontalAdapterOption
 import com.cheise_proj.e_commerce.utils.ItemClickListener
 import kotlinx.android.synthetic.main.list_horizontal_product.view.*
 
 class HorizontalProductAdapter :
     ListAdapter<Product, HorizontalProductAdapter.ProductVh>(ProductDiff()) {
-    private var itemClickListener: ItemClickListener<String?>? = null
+    private var itemClickListener: ItemClickListener<Pair<HorizontalAdapterOption, String?>>? = null
 
-    fun setItemCallback(callback: ItemClickListener<String?>?) {
+    fun setItemCallback(callback: ItemClickListener<Pair<HorizontalAdapterOption, String?>>?) {
         itemClickListener = callback
     }
 
@@ -33,7 +34,10 @@ class HorizontalProductAdapter :
 
     class ProductVh(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val discount = kotlin.math.floor(Math.random() * 40).toInt()
-        fun bind(item: Product?, itemClickListener: ItemClickListener<String?>?) {
+        fun bind(
+            item: Product?,
+            itemClickListener: ItemClickListener<Pair<HorizontalAdapterOption, String?>>?
+        ) {
             with(itemView) {
                 GlideApp.with(context).load(item?.imageUrl).centerCrop().into(img_item)
                 tv_discount_banner.text =
@@ -43,12 +47,22 @@ class HorizontalProductAdapter :
                 tv_item_2.text = item?.productName
                 tv_item_3.text = item?.unitPrice
                 tv_item_4.text = item?.unitPrice
-                this.setOnClickListener { itemClickListener?.onClick(item?.productID) }
-                applyFavorite()
+                this.setOnClickListener {
+                    itemClickListener?.onClick(
+                        Pair(
+                            HorizontalAdapterOption.VIEW,
+                            item?.productID
+                        )
+                    )
+                }
+                applyFavorite(itemClickListener, item?.productID)
             }
         }
 
-        private fun View.applyFavorite() {
+        private fun View.applyFavorite(
+            itemClickListener: ItemClickListener<Pair<HorizontalAdapterOption, String?>>?,
+            productID: String?
+        ) {
             fab_fav.setOnClickListener {
                 fab_fav.setImageDrawable(
                     ContextCompat.getDrawable(
@@ -56,6 +70,7 @@ class HorizontalProductAdapter :
                         R.drawable.ic_favorite
                     )
                 )
+                itemClickListener?.onClick(Pair(HorizontalAdapterOption.FAVORITE, productID))
             }
         }
     }

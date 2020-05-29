@@ -1,13 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.bag.SuccessFragment">
 
-    <TextView
+    <ImageView
+        android:id="@+id/img_item"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content"
+        android:scaleType="centerCrop"
+        android:src="@drawable/success_1"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="ContentDescription" />
 
-</FrameLayout>
+    <TextView
+        android:id="@+id/tv_header"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="@string/label_success"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        app:layout_constraintEnd_toEndOf="@id/img_item"
+        app:layout_constraintStart_toStartOf="@id/img_item"
+        app:layout_constraintTop_toTopOf="@id/img_item" />
+
+    <TextView
+        android:id="@+id/tv_sub_header"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/success1_sub_header"
+        android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+        app:layout_constraintEnd_toEndOf="@id/img_item"
+        app:layout_constraintStart_toStartOf="@id/img_item"
+        app:layout_constraintTop_toBottomOf="@id/tv_header" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_continue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/label_continue_shopping"
+        android:textAllCaps="false"
+        app:cornerRadius="14dp"
+        android:layout_marginTop="16dp"
+        android:padding="16dp"
+        app:layout_constraintEnd_toEndOf="@id/img_item"
+        app:layout_constraintStart_toStartOf="@id/img_item"
+        app:layout_constraintTop_toBottomOf="@id/tv_sub_header" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

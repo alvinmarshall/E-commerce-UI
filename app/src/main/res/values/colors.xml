@@ -11,4 +11,6 @@
     <color name="color_3">#B82222</color>
     <color name="color_4">#BEA9A9</color>
     <color name="color_5">#E2BB8D</color>
+
+    <color name="color_light_back">#222222</color>
 </resources>

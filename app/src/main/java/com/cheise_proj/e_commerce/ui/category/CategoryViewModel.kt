@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.cheise_proj.e_commerce.data.repository.ProductRepository
+import com.cheise_proj.e_commerce.data.repository.IProductRepository
 import com.cheise_proj.e_commerce.di.IODispatcher
 import com.cheise_proj.e_commerce.extension.onError
 import com.cheise_proj.e_commerce.extension.onSuccess
@@ -16,7 +16,7 @@ import timber.log.Timber
 import javax.inject.Inject
 
 class CategoryViewModel @Inject constructor(
-    private val productRepository: ProductRepository,
+    private val productRepository: IProductRepository,
     @IODispatcher private val dispatcher: CoroutineDispatcher
 ) :
     ViewModel() {

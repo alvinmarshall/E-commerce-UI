@@ -8,36 +8,69 @@
     <fragment
         android:id="@+id/cartFragment"
         android:name="com.cheise_proj.e_commerce.ui.bag.CartFragment"
-        android:label="fragment_cart"
-        tools:layout="@layout/fragment_cart" />
+        android:label="My Bag"
+        tools:layout="@layout/fragment_cart">
+        <action
+            android:id="@+id/action_cartFragment_to_checkoutFragment"
+            app:destination="@id/checkoutFragment" />
+    </fragment>
     <fragment
         android:id="@+id/checkoutFragment"
         android:name="com.cheise_proj.e_commerce.ui.bag.CheckoutFragment"
-        android:label="fragment_checkout"
-        tools:layout="@layout/fragment_checkout" />
+        android:label="@string/label_check_out"
+        tools:layout="@layout/fragment_checkout">
+        <argument
+            android:name="cart_total"
+            android:defaultValue="@null"
+            app:argType="string"
+            app:nullable="true" />
+        <action
+            android:id="@+id/action_checkoutFragment_to_addressFragment"
+            app:destination="@id/addressFragment" />
+        <action
+            android:id="@+id/action_checkoutFragment_to_paymentCardFragment"
+            app:destination="@id/paymentCardFragment" />
+        <action
+            android:id="@+id/action_checkoutFragment_to_successFragment"
+            app:destination="@id/successFragment" />
+    </fragment>
     <fragment
         android:id="@+id/createAddressFragment"
         android:name="com.cheise_proj.e_commerce.ui.bag.CreateAddressFragment"
-        android:label="fragment_create_address"
+        android:label="Adding Shopping Address"
         tools:layout="@layout/fragment_create_address" />
     <fragment
         android:id="@+id/addressFragment"
         android:name="com.cheise_proj.e_commerce.ui.bag.AddressFragment"
-        android:label="fragment_address"
-        tools:layout="@layout/fragment_address" />
+        android:label="Shipping Addresses"
+        tools:layout="@layout/fragment_address">
+        <action
+            android:id="@+id/action_addressFragment_to_createAddressFragment"
+            app:destination="@id/createAddressFragment" />
+    </fragment>
     <fragment
         android:id="@+id/successFragment"
         android:name="com.cheise_proj.e_commerce.ui.bag.SuccessFragment"
         android:label="fragment_success"
-        tools:layout="@layout/fragment_success" />
+        tools:layout="@layout/fragment_success">
+        <action
+            android:id="@+id/action_successFragment_to_success2Fragment"
+            app:destination="@id/success2Fragment" />
+    </fragment>
     <fragment
         android:id="@+id/success2Fragment"
         android:name="com.cheise_proj.e_commerce.ui.bag.Success2Fragment"
         android:label="fragment_success2"
-        tools:layout="@layout/fragment_success2" />
+        tools:layout="@layout/fragment_success2">
+        <action
+            android:id="@+id/action_success2Fragment_to_cartFragment"
+            app:destination="@id/cartFragment"
+            app:popUpTo="@id/cart_navigation"
+            app:popUpToInclusive="true" />
+    </fragment>
     <fragment
         android:id="@+id/paymentCardFragment"
         android:name="com.cheise_proj.e_commerce.ui.bag.PaymentCardFragment"
-        android:label="fragment_payment_card2"
+        android:label="Payment method"
         tools:layout="@layout/fragment_payment_card" />
 </navigation>

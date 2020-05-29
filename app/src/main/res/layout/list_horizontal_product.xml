@@ -43,11 +43,11 @@
             android:layout_height="wrap_content"
             app:backgroundTint="@android:color/white"
             app:fabSize="mini"
+            app:backgroundTintMode="add"
             app:layout_constraintBottom_toBottomOf="@id/img_item"
             app:layout_constraintEnd_toEndOf="@id/img_item"
             app:layout_constraintTop_toBottomOf="@id/img_item"
-            app:srcCompat="@drawable/ic_favorite_white"
-            app:useCompatPadding="true" />
+            app:srcCompat="@drawable/ic_favorite_white" />
 
         <RatingBar
             android:id="@+id/ratingBar"
@@ -75,7 +75,6 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="5dp"
-
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/ratingBar"
             tools:text="@tools:sample/full_names" />
@@ -86,12 +85,9 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="5dp"
-
-            android:textAppearance="@style/TextAppearance.AppCompat.Large"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_item_1"
             tools:text="@tools:sample/full_names" />
-
 
         <TextView
             android:id="@+id/tv_item_3"
@@ -99,7 +95,6 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="5dp"
-
             android:foreground="@drawable/tv_strike_through_bg"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             app:layout_constraintStart_toStartOf="parent"
@@ -117,7 +112,6 @@
             app:layout_constraintStart_toEndOf="@id/tv_item_3"
             app:layout_constraintTop_toBottomOf="@id/tv_item_2"
             tools:text="32$" />
-
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </com.google.android.material.card.MaterialCardView>

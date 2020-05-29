@@ -9,6 +9,7 @@
     android:fitsSystemWindows="true"
     app:defaultNavHost="true"
     app:navGraph="@navigation/product_navigation"
+    tools:context=".ui.product.ProductMainFragment"
     tools:ignore="FragmentTagUsage">
 
 </fragment>

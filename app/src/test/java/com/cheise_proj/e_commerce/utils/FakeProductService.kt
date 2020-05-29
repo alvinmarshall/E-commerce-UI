@@ -1,9 +1,15 @@
 package com.cheise_proj.e_commerce.utils
 
+import com.cheise_proj.e_commerce.extension.toDtoList
 import com.cheise_proj.e_commerce.model.Category
 import com.cheise_proj.e_commerce.model.Product
+import com.cheise_proj.e_commerce.model.dto.ProductDto
 
 object FakeProductService {
+    fun getProductDto(): ProductDto {
+        return ProductDto(data = getProduct().toDtoList())
+    }
+
     fun getProduct(): List<Product> {
         return arrayListOf(
             Product(
@@ -17,7 +23,8 @@ object FakeProductService {
                 reorderLevel = "any_level",
                 quantityPerUnit = "any_qty",
                 productName = "any_product_name",
-                discontinued = "any_discontinued"
+                discontinued = "any_discontinued",
+                favorite = 0
             )
 
         )

@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="16dp"
+    android:elevation="11dp"
+    app:cardCornerRadius="5dp"
+    app:cardUseCompatPadding="true">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/img_item"
+            android:layout_width="match_parent"
+            android:layout_height="216dp"
+            android:scaleType="centerCrop"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="ContentDescription"
+            tools:src="@drawable/visa_card" />
+
+        <TextView
+            android:id="@+id/tv_item_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            android:textColor="@android:color/white"
+            app:layout_constraintBottom_toBottomOf="@id/img_item"
+            app:layout_constraintEnd_toEndOf="@id/img_item"
+            app:layout_constraintStart_toStartOf="@id/img_item"
+            app:layout_constraintTop_toTopOf="@id/img_item"
+            tools:text="@tools:sample/full_names" />
+
+        <TextView
+            android:id="@+id/tv_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            android:text="@string/label_card_holder_name"
+            android:textColor="@android:color/white"
+            app:layout_constraintBottom_toBottomOf="@id/img_item"
+            app:layout_constraintStart_toStartOf="@id/img_item"
+            app:layout_constraintTop_toBottomOf="@id/tv_item_1" />
+
+        <TextView
+            android:id="@+id/tv_item_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            android:textColor="@android:color/white"
+            app:layout_constraintBottom_toBottomOf="@id/img_item"
+            app:layout_constraintStart_toStartOf="@id/img_item"
+
+            tools:text="@tools:sample/full_names" />
+
+        <TextView
+            android:id="@+id/tv_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:padding="16dp"
+            android:text="@string/label_expiry_date"
+            android:textColor="@android:color/white"
+            app:layout_constraintBottom_toBottomOf="@id/img_item"
+            app:layout_constraintStart_toEndOf="@id/tv_1"
+            app:layout_constraintTop_toBottomOf="@id/tv_item_1" />
+
+        <TextView
+            android:id="@+id/tv_item_3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:padding="16dp"
+            android:textColor="@android:color/white"
+            app:layout_constraintBottom_toBottomOf="@id/img_item"
+            app:layout_constraintStart_toStartOf="@id/tv_2"
+            tools:text="05/23" />
+
+        <CheckBox
+            android:id="@+id/cb_default"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/label_default_card"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_item_3" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</com.google.android.material.card.MaterialCardView>

@@ -1,6 +1,7 @@
 package com.cheise_proj.e_commerce.ui.home
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
+import com.cheise_proj.e_commerce.data.repository.IFavoriteRepository
 import com.cheise_proj.e_commerce.data.repository.IProductRepository
 import com.cheise_proj.e_commerce.ui.product.ProductViewModel
 import com.cheise_proj.e_commerce.utils.FakeProductService
@@ -29,6 +30,9 @@ class ProductViewModelTest {
 
     @Mock
     lateinit var productRepository: IProductRepository
+
+    @Mock
+    lateinit var favoriteRepository: IFavoriteRepository
     private lateinit var productViewModel: ProductViewModel
 
     @ExperimentalCoroutinesApi
@@ -43,7 +47,7 @@ class ProductViewModelTest {
         MockitoAnnotations.initMocks(this)
         Dispatchers.setMain(testDispatcher)
         productViewModel = ProductViewModel(
-            productRepository,
+            productRepository, favoriteRepository,
             TestCoroutineDispatcher()
         )
     }

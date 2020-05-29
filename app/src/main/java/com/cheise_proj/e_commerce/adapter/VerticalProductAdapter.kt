@@ -9,20 +9,22 @@ import androidx.recyclerview.widget.RecyclerView
 import com.cheise_proj.e_commerce.R
 import com.cheise_proj.e_commerce.model.Category
 import com.cheise_proj.e_commerce.utils.ClickOption
+import com.cheise_proj.e_commerce.utils.HorizontalAdapterOption
 import com.cheise_proj.e_commerce.utils.ItemClickListener
 import kotlinx.android.synthetic.main.list_vertical_product.view.*
 
 class VerticalProductAdapter :
     ListAdapter<Category, VerticalProductAdapter.ProductCategoryVH>(CategoryDiff()) {
     private var itemClickListener: ItemClickListener<Pair<Category?, ClickOption>>? = null
-    private var horizontalItemClickListener: ItemClickListener<String?>? = null
+    private var horizontalItemClickListener: ItemClickListener<Pair<HorizontalAdapterOption, String?>>? =
+        null
 
 
     internal fun setItemClickCallback(callback: ItemClickListener<Pair<Category?, ClickOption>>) {
         itemClickListener = callback
     }
 
-    internal fun setHorizontalItemClickCallback(callback: ItemClickListener<String?>) {
+    internal fun setHorizontalItemClickCallback(callback: ItemClickListener<Pair<HorizontalAdapterOption, String?>>) {
         horizontalItemClickListener = callback
     }
 
@@ -44,7 +46,7 @@ class VerticalProductAdapter :
         fun bind(
             item: Category?,
             itemClickListener: ItemClickListener<Pair<Category?, ClickOption>>?,
-            horizontalItemClickListener: ItemClickListener<String?>?
+            horizontalItemClickListener: ItemClickListener<Pair<HorizontalAdapterOption, String?>>?
         ) {
             applyAdapter(item, horizontalItemClickListener)
 
@@ -68,7 +70,7 @@ class VerticalProductAdapter :
 
         private fun applyAdapter(
             item: Category?,
-            horizontalItemClickListener: ItemClickListener<String?>?
+            horizontalItemClickListener: ItemClickListener<Pair<HorizontalAdapterOption, String?>>?
         ) {
             horizontalAdapter.submitList(item?.product)
             horizontalAdapter.setItemCallback(horizontalItemClickListener)

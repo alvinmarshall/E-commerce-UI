@@ -11,8 +11,10 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.bumptech.glide.load.engine.DiskCacheStrategy
+import com.cheise_proj.e_commerce.R
 import com.cheise_proj.e_commerce.di.module.glide.GlideApp
 import com.cheise_proj.e_commerce.factory.ViewModelFactory
+import com.google.android.material.snackbar.Snackbar
 import dagger.android.support.DaggerFragment
 import kotlinx.android.synthetic.main.toolbar_collapse_with_button.*
 import javax.inject.Inject
@@ -62,6 +64,10 @@ import javax.inject.Inject
         }
         viewModel = ViewModelProvider(this,factory)[getViewModel()]
     }
+
+     protected fun showNoData(view: View) {
+         Snackbar.make(view, getString(R.string.no_data_msg), Snackbar.LENGTH_LONG).show()
+     }
 
 
 }
