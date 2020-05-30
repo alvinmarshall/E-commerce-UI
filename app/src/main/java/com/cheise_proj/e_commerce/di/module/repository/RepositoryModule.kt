@@ -22,5 +22,11 @@ class RepositoryModule {
 
         @Binds
         fun bindCardRepository(cardRepository: CardRepository): ICardRepository
+
+        @Binds
+        fun bindOrderRepository(orderRepository: OrderRepository): IOrderRepository
+
+        @Binds
+        fun bindDeliveryRepository(deliveryRepository: DeliveryRepository): IDeliveryRepository
     }
 }

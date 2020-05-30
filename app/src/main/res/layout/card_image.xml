@@ -5,7 +5,10 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_marginStart="16dp"
+    android:background="?attr/selectableItemBackground"
+    android:clickable="true"
     android:elevation="11dp"
+    android:focusable="true"
     app:cardCornerRadius="5dp"
     app:cardUseCompatPadding="true">
 
@@ -16,7 +19,7 @@
         <ImageView
             android:id="@+id/img_item"
             android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_height="72dp"
             android:scaleType="centerCrop"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -24,11 +27,13 @@
             tools:src="@tools:sample/backgrounds/scenic" />
 
         <TextView
-            android:id="@+id/tv_header"
-            android:layout_width="wrap_content"
+            android:id="@+id/tv_sub_header"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="@id/img_item"
-            app:layout_constraintStart_toStartOf="@id/img_item"
+            android:layout_marginTop="8dp"
+            android:textAlignment="center"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/img_item"
             tools:text="2-3 days" />
     </androidx.constraintlayout.widget.ConstraintLayout>

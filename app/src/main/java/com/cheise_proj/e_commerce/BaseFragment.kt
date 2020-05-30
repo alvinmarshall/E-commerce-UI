@@ -40,5 +40,9 @@ abstract class BaseFragment<VM : ViewModel> : DaggerFragment() {
         Snackbar.make(view, getString(R.string.no_data_msg), Snackbar.LENGTH_LONG).show()
     }
 
+    protected fun snackMessage(view: View, message: String) {
+        Snackbar.make(view, message, Snackbar.LENGTH_SHORT).show()
+    }
+
 
 }

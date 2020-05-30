@@ -1,10 +1,8 @@
 package com.cheise_proj.e_commerce.di.module.room
 
 import android.content.Context
-import androidx.room.Room
 import com.cheise_proj.e_commerce.data.db.LocalSource
 import com.cheise_proj.e_commerce.data.db.dao.*
-import com.cheise_proj.e_commerce.utils.DATABASE_NAME
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton
@@ -16,12 +14,7 @@ class RoomModule {
 
     @Singleton
     @Provides
-    fun provideRoomDatabase(context: Context): LocalSource {
-        return Room
-            .databaseBuilder(context, LocalSource::class.java, DATABASE_NAME)
-            .fallbackToDestructiveMigration()
-            .build()
-    }
+    fun provideRoomDatabase(context: Context): LocalSource = LocalSource.getInstance(context)
 
     @Singleton
     @Provides
@@ -50,5 +43,13 @@ class RoomModule {
     @Singleton
     @Provides
     fun provideCardDao(localSource: LocalSource): CardDao = localSource.cardDao()
+
+    @Singleton
+    @Provides
+    fun provideOrderDao(localSource: LocalSource): OrderDao = localSource.orderDao()
+
+    @Singleton
+    @Provides
+    fun provideDeliveryDao(localSource: LocalSource): DeliveryDao = localSource.deliveryDao()
 
 }

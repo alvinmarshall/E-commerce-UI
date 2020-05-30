@@ -58,7 +58,7 @@ class BagViewModel @Inject constructor(
 
     fun updateCart(cartEntity: CartEntity){
         viewModelScope.launch(dispatcher) {
-            cartRepository.updateCartQuantity(cartEntity)
+            cartRepository.updateCart(cartEntity)
         }
     }
 

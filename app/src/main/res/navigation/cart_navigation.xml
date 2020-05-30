@@ -19,11 +19,6 @@
         android:name="com.cheise_proj.e_commerce.ui.bag.CheckoutFragment"
         android:label="@string/label_check_out"
         tools:layout="@layout/fragment_checkout">
-        <argument
-            android:name="cart_total"
-            android:defaultValue="@null"
-            app:argType="string"
-            app:nullable="true" />
         <action
             android:id="@+id/action_checkoutFragment_to_addressFragment"
             app:destination="@id/addressFragment" />
@@ -33,6 +28,9 @@
         <action
             android:id="@+id/action_checkoutFragment_to_successFragment"
             app:destination="@id/successFragment" />
+        <argument
+            android:name="cart_extra"
+            app:argType="com.cheise_proj.e_commerce.model.CartExtras" />
     </fragment>
     <fragment
         android:id="@+id/createAddressFragment"

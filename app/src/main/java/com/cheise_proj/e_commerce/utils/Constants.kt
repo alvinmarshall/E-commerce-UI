@@ -24,8 +24,9 @@ enum class CartOptions {
 }
 
 enum class CheckoutOption {
-    ADDRESS_CHANGE, PAYMENT_CHANGE
+    ADDRESS_CHANGE, PAYMENT_CHANGE,DELIVERY
 }
+
 
 const val MASTER_CARD_LOGO_URL =
     "https://toppng.com/uploads/preview/mastercard-logo-png-image-background-logo-mastercard-11563000929p7h8ctftya.png"

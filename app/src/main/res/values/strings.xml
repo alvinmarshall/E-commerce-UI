@@ -52,6 +52,12 @@
     <string name="label_check_out">Check out</string>
     <string name="label_delete_from_the_list">Delete from the list</string>
     <string name="label_add_to_favorite">Add to favorite</string>
+    <string name="cart_empty_msg">Sorry, Your cart is empty</string>
+    <string name="cart_item_add_msg">Item added</string>
+
+    <string name="cart_no_delivery_type_msg">Select a delivery method</string>
+    <string name="cart_no_address_msg">Set a default shipping address</string>
+    <string name="cart_no_payment_method_msg">Set a default payment method</string>
 
 
     <!--    Modal-->
@@ -133,7 +139,6 @@
     <string name="label_delivery">Delivery:</string>
     <string name="label_summary">Summary:</string>
     <string name="label_submit_order">submit order</string>
-
 
 
     <string name="no_data_msg">No data available</string>

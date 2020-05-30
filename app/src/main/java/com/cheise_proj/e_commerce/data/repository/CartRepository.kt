@@ -20,8 +20,8 @@ class CartRepository @Inject constructor(private val cartDao: CartDao) : ICartRe
         cartDao.removeCart(identifier)
     }
 
-    override suspend fun updateCartQuantity(cartEntity: CartEntity) {
+    override suspend fun updateCart(cartEntity: CartEntity) {
         Timber.i("updateCartQuantity: $cartEntity")
-        cartDao.updateCartQuantity(cartEntity)
+        cartDao.updateCart(cartEntity)
     }
 }

@@ -7,8 +7,6 @@ import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.test.runBlockingTest
 import org.junit.Before
-
-import org.junit.Assert.*
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.junit.runners.JUnit4
@@ -16,7 +14,6 @@ import org.mockito.Mock
 import org.mockito.Mockito
 import org.mockito.Mockito.times
 import org.mockito.MockitoAnnotations
-import timber.log.Timber
 
 @ExperimentalCoroutinesApi
 @RunWith(JUnit4::class)

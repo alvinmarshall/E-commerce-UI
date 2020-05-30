@@ -1,6 +1,7 @@
 package com.cheise_proj.e_commerce.ui.bag
 
 import android.os.Bundle
+import android.text.TextUtils
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,6 +14,7 @@ import com.cheise_proj.e_commerce.BaseFragment
 import com.cheise_proj.e_commerce.R
 import com.cheise_proj.e_commerce.data.db.entity.FavoriteEntity
 import com.cheise_proj.e_commerce.data.db.entity.ProductWithCart
+import com.cheise_proj.e_commerce.model.CartExtras
 import com.cheise_proj.e_commerce.ui.bag.adapter.CartAdapter
 import com.cheise_proj.e_commerce.ui.modal.ModalPromoFragment
 import com.cheise_proj.e_commerce.utils.CartOptions
@@ -22,6 +24,7 @@ import kotlinx.android.synthetic.main.enter_promo_code.*
 import kotlinx.android.synthetic.main.fragment_cart.*
 import kotlinx.android.synthetic.main.toolbar_common.*
 import org.jetbrains.anko.support.v4.toast
+import java.util.*
 
 /**
  * A simple [Fragment] subclass.
@@ -29,6 +32,8 @@ import org.jetbrains.anko.support.v4.toast
 class CartFragment : BaseFragment<BagViewModel>() {
     private lateinit var adapter: CartAdapter
     private var totalPrice = 0f
+    private var cartItems: Int = 0
+    private var promoCode: String? = UUID.randomUUID().toString().substring(0, 7)
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -53,7 +58,9 @@ class CartFragment : BaseFragment<BagViewModel>() {
     }
 
     private fun navigateToCheckout() {
-        val action = CartFragmentDirections.actionCartFragmentToCheckoutFragment(totalPrice.toString())
+        val extras = CartExtras(totalPrice, promoCode,cartItems)
+        val action =
+            CartFragmentDirections.actionCartFragmentToCheckoutFragment(extras)
         findNavController().navigate(action)
     }
 
@@ -62,6 +69,9 @@ class CartFragment : BaseFragment<BagViewModel>() {
         modal.setClickCallback(object : ItemClickListener<String> {
             override fun onClick(data: String) {
                 tv_promo_code.text = data
+                if (!TextUtils.isEmpty(data)) {
+                    promoCode = data
+                }
             }
         })
 
@@ -139,6 +149,7 @@ class CartFragment : BaseFragment<BagViewModel>() {
     }
 
     private fun loadProductCart(data: List<ProductWithCart>?) {
+        cartItems = data?.size ?: 0
         setTotal(data)
         adapter.submitList(data)
         recycler_view.adapter = adapter

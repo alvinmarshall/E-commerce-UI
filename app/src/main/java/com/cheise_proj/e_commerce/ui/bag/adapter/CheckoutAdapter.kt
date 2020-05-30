@@ -1,15 +1,17 @@
 package com.cheise_proj.e_commerce.ui.bag.adapter
 
-import android.graphics.BitmapFactory
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.cheise_proj.e_commerce.R
 import com.cheise_proj.e_commerce.data.db.entity.AddressEntity
 import com.cheise_proj.e_commerce.data.db.entity.CardEntity
+import com.cheise_proj.e_commerce.data.db.entity.DeliveryEntity
 import com.cheise_proj.e_commerce.di.module.glide.GlideApp
 import com.cheise_proj.e_commerce.extension.hideCardDigit
 import com.cheise_proj.e_commerce.model.Checkout
@@ -19,6 +21,7 @@ import kotlinx.android.synthetic.main.checkout_address.view.*
 import kotlinx.android.synthetic.main.checkout_address.view.btn_change
 import kotlinx.android.synthetic.main.checkout_address.view.tv_header
 import kotlinx.android.synthetic.main.checkout_address.view.tv_item_1
+import kotlinx.android.synthetic.main.checkout_delivery.view.*
 import kotlinx.android.synthetic.main.checkout_payment.view.*
 
 class CheckoutAdapter :
@@ -31,7 +34,8 @@ class CheckoutAdapter :
 
     private var _address: AddressEntity? = null
     private var _card: CardEntity? = null
-    private var itemClickListener: ItemClickListener<CheckoutOption>? = null
+    private var _deliveryList: List<DeliveryEntity>? = emptyList()
+    private var itemClickListener: ItemClickListener<Pair<CheckoutOption,Int?>>? = null
 
     internal fun addShippingAddress(address: AddressEntity?) {
         _address = address
@@ -42,8 +46,11 @@ class CheckoutAdapter :
         _card = card
     }
 
-    internal fun addDeliveryMethod() {}
-    internal fun setItemClickCallback(callback: ItemClickListener<CheckoutOption>) {
+    internal fun addDeliveryMethod(deliveryList: List<DeliveryEntity>) {
+        _deliveryList = deliveryList
+    }
+
+    internal fun setItemClickCallback(callback: ItemClickListener<Pair<CheckoutOption,Int?>>) {
         itemClickListener = callback
     }
 
@@ -84,7 +91,7 @@ class CheckoutAdapter :
 
         }
         if (getItemViewType(position) == DELIVERY_VIEW) {
-            (holder as DeliveryMethodVh).bind(getItem(position))
+            (holder as DeliveryMethodVh).bind(getItem(position), _deliveryList,itemClickListener)
 
         }
     }
@@ -96,7 +103,7 @@ internal class ShippingAddressVh(itemView: View) : RecyclerView.ViewHolder(itemV
     fun bind(
         item: Checkout?,
         _address: AddressEntity?,
-        itemClickListener: ItemClickListener<CheckoutOption>?
+        itemClickListener: ItemClickListener<Pair<CheckoutOption,Int?>>?
     ) {
         with(itemView) {
             tv_header.text = item?.title
@@ -108,7 +115,7 @@ internal class ShippingAddressVh(itemView: View) : RecyclerView.ViewHolder(itemV
                 _address?.zipCode,
                 _address?.country
             )
-            btn_change.setOnClickListener { itemClickListener?.onClick(CheckoutOption.ADDRESS_CHANGE) }
+            btn_change.setOnClickListener { itemClickListener?.onClick(Pair(CheckoutOption.ADDRESS_CHANGE,_address?.id)) }
         }
     }
 }
@@ -117,21 +124,38 @@ internal class PaymentVh(itemView: View) : RecyclerView.ViewHolder(itemView) {
     fun bind(
         item: Checkout?,
         _card: CardEntity?,
-        itemClickListener: ItemClickListener<CheckoutOption>?
+        itemClickListener: ItemClickListener<Pair<CheckoutOption,Int?>>?
     ) {
         with(itemView) {
             tv_header.text = item?.title
             tv_item_1.text = _card?.cardNumber?.hideCardDigit() ?: "Not set"
-            btn_change.setOnClickListener { itemClickListener?.onClick(CheckoutOption.PAYMENT_CHANGE) }
+            btn_change.setOnClickListener { itemClickListener?.onClick(Pair(CheckoutOption.PAYMENT_CHANGE,_card?.id)) }
             GlideApp.with(context).load(_card?.imageUrl).into(img_item)
         }
     }
 }
 
 internal class DeliveryMethodVh(itemView: View) : RecyclerView.ViewHolder(itemView) {
-    fun bind(item: Checkout?) {
+    fun bind(
+        item: Checkout?,
+        _deliveryList: List<DeliveryEntity>?,
+        itemClickListener: ItemClickListener<Pair<CheckoutOption,Int?>>?
+    ) {
         with(itemView) {
             tv_header.text = item?.title
+            img_container.removeAllViews()
+            _deliveryList?.forEach { delivery ->
+                val cardView =
+                    LayoutInflater.from(context).inflate(R.layout.card_image, img_container, false)
+                cardView.setOnClickListener { itemClickListener?.onClick(Pair(CheckoutOption.DELIVERY,delivery.id)) }
+                val imageView = cardView.findViewById<ImageView>(R.id.img_item)
+                val subText = cardView.findViewById<TextView>(R.id.tv_sub_header)
+                GlideApp.with(context)
+                    .load(delivery.imageUrl)
+                    .centerCrop().into(imageView)
+                subText.text = delivery.duration
+                img_container.addView(cardView)
+            }
 
         }
 

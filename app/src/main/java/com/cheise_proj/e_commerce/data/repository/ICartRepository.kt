@@ -8,5 +8,5 @@ interface ICartRepository {
     suspend fun addToCart(cartEntity: CartEntity)
     fun getProductCart(): Flow<List<ProductWithCart>>
     suspend fun removeCart(identifier: Int?)
-    suspend fun updateCartQuantity(cartEntity: CartEntity)
+    suspend fun updateCart(cartEntity: CartEntity)
 }

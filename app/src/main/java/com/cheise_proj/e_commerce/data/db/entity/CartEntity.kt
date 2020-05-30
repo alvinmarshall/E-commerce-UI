@@ -10,7 +10,8 @@ data class CartEntity(
     var color: String,
     var size: String,
     var quantity: Int,
-    var productId: String
+    var productId: String,
+    var promoCode: String
 ) {
-    constructor() : this(0, "Blue", "L", 1, "")
+    constructor() : this(0, "Blue", "L", 1, "","")
 }

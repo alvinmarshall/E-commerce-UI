@@ -17,6 +17,6 @@ interface CartDao {
     fun removeCart(identifier: Int?)
 
     @Update
-    fun updateCartQuantity(cartEntity: CartEntity)
+    fun updateCart(cartEntity: CartEntity)
 
 }
