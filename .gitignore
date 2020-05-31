@@ -13,7 +13,7 @@
 .externalNativeBuild
 .cxx
 # Built application files
-*.apk
+
 *.aar
 *.ap_
 *.aab
