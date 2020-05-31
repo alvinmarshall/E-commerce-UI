@@ -8,12 +8,22 @@
     <fragment
         android:id="@+id/profileFragment"
         android:name="com.cheise_proj.e_commerce.ui.profile.ProfileFragment"
-        android:label="fragment_profile"
-        tools:layout="@layout/fragment_profile" />
+        android:label="My Profile"
+        tools:layout="@layout/fragment_profile" >
+        <action
+            android:id="@+id/action_profileFragment_to_ordersFragment"
+            app:destination="@id/ordersFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_addressFragment"
+            app:destination="@id/addressFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_paymentCardFragment"
+            app:destination="@id/paymentCardFragment" />
+    </fragment>
     <fragment
         android:id="@+id/ordersFragment"
         android:name="com.cheise_proj.e_commerce.ui.profile.OrdersFragment"
-        android:label="fragment_orders"
+        android:label="My Orders"
         tools:layout="@layout/fragment_orders" />
     <fragment
         android:id="@+id/orderDetailFragment"
@@ -25,4 +35,14 @@
         android:name="com.cheise_proj.e_commerce.ui.profile.ProfileSettingsFragment"
         android:label="fragment_profile_settings"
         tools:layout="@layout/fragment_profile_settings" />
+    <fragment
+        android:id="@+id/addressFragment"
+        android:name="com.cheise_proj.e_commerce.ui.bag.AddressFragment"
+        android:label="Shipping Addresses"
+        tools:layout="@layout/fragment_address" />
+    <fragment
+        android:id="@+id/paymentCardFragment"
+        android:name="com.cheise_proj.e_commerce.ui.bag.PaymentCardFragment"
+        android:label="Payment methods"
+        tools:layout="@layout/fragment_payment_card" />
 </navigation>

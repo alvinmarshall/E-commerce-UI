@@ -20,7 +20,9 @@ import com.cheise_proj.e_commerce.ui.category.adapter.CatalogAdapter
 import com.cheise_proj.e_commerce.ui.category.adapter.CategoryChipAdapter
 import com.cheise_proj.e_commerce.ui.modal.ModalSortFragment
 import com.cheise_proj.e_commerce.ui.modal.ModalSortFragment.Companion.SORT_MODAL_ARRAY
+import com.cheise_proj.e_commerce.utils.CatalogOption
 import com.cheise_proj.e_commerce.utils.DELAY_MILL
+import com.cheise_proj.e_commerce.utils.HorizontalAdapterOption
 import com.cheise_proj.e_commerce.utils.ItemClickListener
 import kotlinx.android.synthetic.main.fragment_category_catalog.*
 import org.jetbrains.anko.support.v4.toast
@@ -47,7 +49,33 @@ class CategoryCatalogFragment : BaseFragment<CategoryViewModel>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         adapter = CatalogAdapter()
+        adapter.setItemClickCallback(object : ItemClickListener<Pair<Product?, CatalogOption>> {
+            override fun onClick(data: Pair<Product?, CatalogOption>) {
+                when (data.second) {
+                    CatalogOption.VIEW -> {
+                    }
+                    CatalogOption.FAVORITE -> {
+                        viewModel.addToFavorite(data.first?.productID ?: "")
+                        snackMessage(root, "item added")
+                    }
+                }
+            }
+        })
         gridAdapter = HorizontalProductAdapter()
+        gridAdapter.apply {
+            setItemCallback(object : ItemClickListener<Pair<HorizontalAdapterOption, String?>> {
+                override fun onClick(data: Pair<HorizontalAdapterOption, String?>) {
+                    when (data.first) {
+                        HorizontalAdapterOption.VIEW -> {
+                        }
+                        HorizontalAdapterOption.FAVORITE -> {
+                            viewModel.addToFavorite(data.second ?: "")
+                            snackMessage(root, "item added")
+                        }
+                    }
+                }
+            })
+        }
         chipAdapter = CategoryChipAdapter()
         chipAdapter.apply {
             setItemClickCallback(object : ItemClickListener<String?> {

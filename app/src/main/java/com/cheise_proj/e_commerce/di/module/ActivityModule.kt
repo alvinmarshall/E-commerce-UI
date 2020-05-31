@@ -7,6 +7,7 @@ import com.cheise_proj.e_commerce.ui.category.module.CategoryModule
 import com.cheise_proj.e_commerce.ui.category.ui.CategoriesFragment
 import com.cheise_proj.e_commerce.ui.favorite.module.FavoriteModule
 import com.cheise_proj.e_commerce.ui.product.module.ProductModule
+import com.cheise_proj.e_commerce.ui.profile.module.ProfileModule
 import com.cheise_proj.e_commerce.ui.review.module.ReviewModule
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
@@ -21,7 +22,8 @@ interface ActivityModule {
             ProductModule::class,
             ReviewModule::class,
             FavoriteModule::class,
-            BagModule::class
+            BagModule::class,
+            ProfileModule::class
         ]
     )
     fun contributeMainActivity(): MainActivity
@@ -32,7 +34,6 @@ interface FragmentModule {
 
     @ContributesAndroidInjector(modules = [CategoriesModule::class])
     fun contributeCategoriesFragment(): CategoriesFragment
-
 
 
 }

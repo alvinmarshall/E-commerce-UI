@@ -2,7 +2,9 @@ package com.cheise_proj.e_commerce.utils
 
 const val NO_INTERNET_CONNECTION = "No network connection"
 const val DELAY_MILL = 1000L
-
+const val USER_NAME = "Test user"
+const val USER_EMAIL = "tuser@me.com"
+const val USER_AVATAR_URL = "https://randomuser.me/api/portraits/women/63.jpg"
 enum class ClickOption {
     VIEW, VIEW_ALL
 }

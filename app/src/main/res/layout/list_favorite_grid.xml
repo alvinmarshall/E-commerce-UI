@@ -48,7 +48,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/fab_fav"
+            android:id="@+id/fab_cart"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:backgroundTint="@android:color/white"
@@ -56,7 +56,7 @@
             app:layout_constraintBottom_toBottomOf="@id/img_item"
             app:layout_constraintEnd_toEndOf="@id/img_item"
             app:layout_constraintTop_toBottomOf="@id/img_item"
-            app:srcCompat="@drawable/ic_favorite_white" />
+            app:srcCompat="@drawable/ic_shopping_bag" />
 
         <RatingBar
             android:id="@+id/ratingBar"

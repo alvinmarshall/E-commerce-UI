@@ -4,6 +4,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.cheise_proj.e_commerce.data.db.entity.FavoriteEntity
+import com.cheise_proj.e_commerce.data.repository.IFavoriteRepository
 import com.cheise_proj.e_commerce.data.repository.IProductRepository
 import com.cheise_proj.e_commerce.di.IODispatcher
 import com.cheise_proj.e_commerce.extension.onError
@@ -17,6 +19,7 @@ import javax.inject.Inject
 
 class CategoryViewModel @Inject constructor(
     private val productRepository: IProductRepository,
+    private val favoriteRepository: IFavoriteRepository,
     @IODispatcher private val dispatcher: CoroutineDispatcher
 ) :
     ViewModel() {
@@ -64,6 +67,13 @@ class CategoryViewModel @Inject constructor(
 
     fun setViewStatus(status: Boolean) {
         _viewStatus.value = status
+    }
+    fun addToFavorite(identifier: String) {
+        viewModelScope.launch(dispatcher) {
+            val favoriteEntity = FavoriteEntity()
+            favoriteEntity.productId = identifier
+            favoriteRepository.addFavorite(favoriteEntity)
+        }
     }
 
 }

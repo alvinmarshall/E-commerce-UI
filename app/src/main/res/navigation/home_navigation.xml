@@ -25,4 +25,9 @@
         android:name="com.cheise_proj.e_commerce.ui.favorite.FavoriteMainFragment"
         android:label="fragment_favorite_main"
         tools:layout="@layout/fragment_favorite_main" />
+    <fragment
+        android:id="@+id/profileMainFragment"
+        android:name="com.cheise_proj.e_commerce.ui.profile.ProfileMainFragment"
+        android:label="fragment_profile_main"
+        tools:layout="@layout/fragment_profile_main" />
 </navigation>

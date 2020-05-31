@@ -1,6 +1,5 @@
 package com.cheise_proj.e_commerce.data.db.dao
 
-import androidx.lifecycle.LiveData
 import androidx.room.*
 import com.cheise_proj.e_commerce.data.db.entity.FavoriteEntity
 import com.cheise_proj.e_commerce.data.db.entity.ProductWithFavorite

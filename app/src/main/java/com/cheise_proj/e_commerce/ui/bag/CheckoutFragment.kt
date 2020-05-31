@@ -74,7 +74,8 @@ class CheckoutFragment : BaseFragment<CheckoutViewModel>() {
                 delivery = currentDelivery,
                 status = DeliveryService.DELIVERED,
                 date = Date().time.toString(),
-                tracker = DeliveryService.getDeliveryTracker()
+                tracker = DeliveryService.getDeliveryTracker(),
+                promoCode = args.cartExtra.promoCode
             )
         viewModel.addOrder(order)
         snackMessage(root, getString(R.string.cart_item_add_msg))

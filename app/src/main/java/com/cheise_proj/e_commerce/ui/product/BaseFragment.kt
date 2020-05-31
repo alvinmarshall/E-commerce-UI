@@ -18,7 +18,8 @@ import com.google.android.material.snackbar.Snackbar
 import dagger.android.support.DaggerFragment
 import kotlinx.android.synthetic.main.toolbar_collapse_with_button.*
 import javax.inject.Inject
- abstract class BaseFragment<VM : ViewModel> : DaggerFragment() {
+
+abstract class BaseFragment<VM : ViewModel> : DaggerFragment() {
     @Inject
     lateinit var factory: ViewModelFactory
     protected val handler = Handler(Looper.getMainLooper())
@@ -62,12 +63,16 @@ import javax.inject.Inject
             }
 
         }
-        viewModel = ViewModelProvider(this,factory)[getViewModel()]
+        viewModel = ViewModelProvider(this, factory)[getViewModel()]
     }
 
-     protected fun showNoData(view: View) {
-         Snackbar.make(view, getString(R.string.no_data_msg), Snackbar.LENGTH_LONG).show()
-     }
+    protected fun showNoData(view: View) {
+        Snackbar.make(view, getString(R.string.no_data_msg), Snackbar.LENGTH_LONG).show()
+    }
+
+    protected fun snackMessage(view: View, message: String) {
+        Snackbar.make(view, message, Snackbar.LENGTH_SHORT).show()
+    }
 
 
 }

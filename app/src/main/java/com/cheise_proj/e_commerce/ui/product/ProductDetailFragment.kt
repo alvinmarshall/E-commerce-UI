@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.cheise_proj.e_commerce.BaseFragment
 import com.cheise_proj.e_commerce.R
 import com.cheise_proj.e_commerce.adapter.HorizontalProductAdapter
+import com.cheise_proj.e_commerce.data.db.entity.CartEntity
 import com.cheise_proj.e_commerce.di.module.glide.GlideApp
 import com.cheise_proj.e_commerce.model.Product
 import com.cheise_proj.e_commerce.ui.modal.ModalColorFragment
@@ -53,9 +54,23 @@ class ProductDetailFragment : BaseFragment<ProductViewModel>() {
         ratingBar.rating = 5f
         tv_rating_number.text = getString(R.string.bracket_text_placeholder,rating)
         tv_rating_number.setOnClickListener { navigateToReviewPage() }
+        btn_cart.setOnClickListener { addToCart() }
+        fab_fav.setOnClickListener { addToFavorite() }
         initRecyclerView()
         configViewModel()
 
+    }
+
+    private fun addToFavorite() {
+        viewModel.addToFavorite(args.productId?:"")
+        snackMessage(root,"item added")
+    }
+
+    private fun addToCart() {
+        val cart = CartEntity()
+        cart.productId = args.productId?:""
+        viewModel.addToCart(cart)
+        snackMessage(root,"item added")
     }
 
     private fun navigateToReviewPage() {

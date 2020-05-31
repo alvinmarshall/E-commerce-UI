@@ -1,27 +1,19 @@
 package com.cheise_proj.e_commerce.ui.modal
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.lifecycle.ViewModelProvider
-
+import androidx.fragment.app.Fragment
 import com.cheise_proj.e_commerce.R
 import com.cheise_proj.e_commerce.data.db.entity.CardEntity
-import com.cheise_proj.e_commerce.data.db.entity.CartEntity
-import com.cheise_proj.e_commerce.factory.ViewModelFactory
-import com.cheise_proj.e_commerce.ui.bag.CheckoutViewModel
 import com.cheise_proj.e_commerce.ui.bag.adapter.CardAdapter.Companion.CARD_MASTER
 import com.cheise_proj.e_commerce.utils.ItemClickListener
 import com.cheise_proj.e_commerce.utils.MASTER_CARD_LOGO_URL
 import com.cheise_proj.e_commerce.utils.VISA_CARD_LOGO_URL
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
-import dagger.android.support.DaggerDialogFragment
 import kotlinx.android.synthetic.main.fragment_modal_create_card.*
-import timber.log.Timber
 import java.util.*
-import javax.inject.Inject
 
 /**
  * A simple [Fragment] subclass.

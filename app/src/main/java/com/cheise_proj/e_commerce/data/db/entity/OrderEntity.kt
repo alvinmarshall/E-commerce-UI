@@ -16,5 +16,6 @@ data class OrderEntity(
     var delivery: DeliveryEntity?,
     var status: Int = 0,
     val date: String,
-    var tracker: String
+    var tracker: String,
+    var promoCode:String?
 )

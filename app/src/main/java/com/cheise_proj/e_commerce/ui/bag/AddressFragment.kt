@@ -15,7 +15,6 @@ import com.cheise_proj.e_commerce.data.db.entity.AddressEntity
 import com.cheise_proj.e_commerce.ui.bag.adapter.AddressAdapter
 import com.cheise_proj.e_commerce.utils.ItemClickListener
 import kotlinx.android.synthetic.main.fragment_address.*
-import kotlinx.android.synthetic.main.list_address.*
 import kotlinx.android.synthetic.main.toolbar_common.*
 
 /**

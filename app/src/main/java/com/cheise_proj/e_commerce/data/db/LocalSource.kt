@@ -28,7 +28,7 @@ import timber.log.Timber
         OrderEntity::class,
         DeliveryEntity::class
     ],
-    version = 1,
+    version = 2,
     exportSchema = false
 )
 @TypeConverters(ListConverter::class)

@@ -28,8 +28,12 @@ class FavoriteViewModel @Inject constructor(
     BaseViewModel() {
     private val _favoriteProducts: MutableLiveData<List<ProductWithFavorite>> = MutableLiveData()
     private val _categories: MutableLiveData<List<Category>> = MutableLiveData()
+    private val _viewStatus: MutableLiveData<Boolean> = MutableLiveData(true)
+
     var favoriteProducts: LiveData<List<ProductWithFavorite>> = _favoriteProducts
     val categories: LiveData<List<Category>> = _categories
+    val getViewStatus: LiveData<Boolean> = _viewStatus
+
 
 
     fun removeFavorite(identifier: Int?) {
@@ -67,5 +71,9 @@ class FavoriteViewModel @Inject constructor(
         viewModelScope.launch(dispatcher) {
             cartRepository.addToCart(cartEntity)
         }
+    }
+
+    fun setViewStatus(status: Boolean) {
+        _viewStatus.value = status
     }
 }

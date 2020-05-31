@@ -1,12 +1,8 @@
 package com.cheise_proj.e_commerce.data.repository
 
-import androidx.lifecycle.LiveData
 import com.cheise_proj.e_commerce.data.db.dao.FavoriteDao
 import com.cheise_proj.e_commerce.data.db.entity.FavoriteEntity
 import com.cheise_proj.e_commerce.data.db.entity.ProductWithFavorite
-import com.cheise_proj.e_commerce.utils.Error
-import com.cheise_proj.e_commerce.utils.Result
-import com.cheise_proj.e_commerce.utils.Success
 import kotlinx.coroutines.flow.Flow
 import timber.log.Timber
 import javax.inject.Inject

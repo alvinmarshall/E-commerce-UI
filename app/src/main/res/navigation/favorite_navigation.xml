@@ -8,5 +8,14 @@
         android:id="@+id/favoriteFragment"
         android:name="com.cheise_proj.e_commerce.ui.favorite.FavoriteFragment"
         android:label="@string/label_favorite"
-        tools:layout="@layout/fragment_favorite" />
+        tools:layout="@layout/fragment_favorite" >
+        <action
+            android:id="@+id/action_favoriteFragment_to_categoryFilterFragment"
+            app:destination="@id/categoryFilterFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/categoryFilterFragment"
+        android:name="com.cheise_proj.e_commerce.ui.category.ui.CategoryFilterFragment"
+        android:label="fragment_category_filter"
+        tools:layout="@layout/fragment_category_filter" />
 </navigation>

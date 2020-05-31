@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.cheise_proj.e_commerce.BaseFragment
@@ -16,18 +17,23 @@ import com.cheise_proj.e_commerce.data.db.entity.ProductWithFavorite
 import com.cheise_proj.e_commerce.model.Category
 import com.cheise_proj.e_commerce.ui.category.adapter.CategoryChipAdapter
 import com.cheise_proj.e_commerce.ui.favorite.adapter.FavoriteAdapter
+import com.cheise_proj.e_commerce.ui.favorite.adapter.FavoriteGridAdapter
+import com.cheise_proj.e_commerce.ui.modal.ModalSortFragment
 import com.cheise_proj.e_commerce.utils.DELAY_MILL
 import com.cheise_proj.e_commerce.utils.FavoriteOption
 import com.cheise_proj.e_commerce.utils.ItemClickListener
 import kotlinx.android.synthetic.main.fragment_favorite.*
 import kotlinx.android.synthetic.main.toolbar_common.*
+import java.util.*
 
 /**
  * A simple [Fragment] subclass.
  */
 class FavoriteFragment : BaseFragment<FavoriteViewModel>() {
     private lateinit var adapter: FavoriteAdapter
+    private lateinit var gridAdapter: FavoriteGridAdapter
     private lateinit var chipAdapter: CategoryChipAdapter
+    private var isLinearViewList = true
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -46,6 +52,29 @@ class FavoriteFragment : BaseFragment<FavoriteViewModel>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         adapter = FavoriteAdapter()
+        gridAdapter = FavoriteGridAdapter()
+        gridAdapter.apply {
+            setClickItemCallback(object :
+                ItemClickListener<Pair<FavoriteOption, ProductWithFavorite?>> {
+                override fun onClick(data: Pair<FavoriteOption, ProductWithFavorite?>) {
+                    when (data.first) {
+                        FavoriteOption.CLOSE -> {
+                            viewModel.removeFavorite(data.second?.favoriteEntity?.id)
+                        }
+                        FavoriteOption.CART -> {
+                            val cart = CartEntity()
+                            with(data.second) {
+                                cart.color = this?.favoriteEntity?.color!!
+                                cart.size = this.favoriteEntity.size
+                                cart.productId = this.favoriteEntity.productId
+                                cart.promoCode = UUID.randomUUID().toString().substring(0, 7)
+                            }
+                            viewModel.addToCart(cart)
+                        }
+                    }
+                }
+            })
+        }
         adapter.apply {
             setClickItemCallback(object :
                 ItemClickListener<Pair<FavoriteOption, ProductWithFavorite?>> {
@@ -60,6 +89,7 @@ class FavoriteFragment : BaseFragment<FavoriteViewModel>() {
                                 cart.color = this?.favoriteEntity?.color!!
                                 cart.size = this.favoriteEntity.size
                                 cart.productId = this.favoriteEntity.productId
+                                cart.promoCode = UUID.randomUUID().toString().substring(0, 7)
                             }
                             viewModel.addToCart(cart)
                         }
@@ -67,9 +97,31 @@ class FavoriteFragment : BaseFragment<FavoriteViewModel>() {
                 }
             })
         }
+        btn_view_list.setOnClickListener {
+            isLinearViewList = !isLinearViewList
+            viewModel.setViewStatus(isLinearViewList)
+        }
+        btn_filter.setOnClickListener { navigateToFilterPage() }
+        tv_selected_filter.text = ModalSortFragment.SORT_MODAL_ARRAY[0]
+        tv_selected_filter.setOnClickListener { openSortModal() }
         chipAdapter = CategoryChipAdapter()
         initRecyclerView()
         configViewModel()
+    }
+
+    private fun navigateToFilterPage() {
+        val action = FavoriteFragmentDirections.actionFavoriteFragmentToCategoryFilterFragment()
+        findNavController().navigate(action)
+    }
+
+    private fun openSortModal() {
+        val sortFragment = ModalSortFragment.newInstance()
+        sortFragment.setItemCallback(object : ItemClickListener<Int> {
+            override fun onClick(data: Int) {
+                tv_selected_filter.text = ModalSortFragment.SORT_MODAL_ARRAY[data]
+            }
+        })
+        sortFragment.show(childFragmentManager, ModalSortFragment.MODAL_SORT_TAG)
     }
 
     private fun configViewModel() {
@@ -79,11 +131,13 @@ class FavoriteFragment : BaseFragment<FavoriteViewModel>() {
     }
 
     private fun subscribeObserver() {
-        viewModel.favoriteProducts.observe(
-            viewLifecycleOwner,
-            Observer { data -> loadFavorites(data) })
-        viewModel.categories.observe(viewLifecycleOwner, Observer(this::loadCategory))
 
+        viewModel.categories.observe(viewLifecycleOwner, Observer(this::loadCategory))
+        viewModel.getViewStatus.observe(viewLifecycleOwner, Observer { status ->
+            viewModel.favoriteProducts.observe(
+                viewLifecycleOwner,
+                Observer { data -> loadFavorites(data, status) })
+        })
         viewModel.isLoading.observe(viewLifecycleOwner, Observer { status -> showProgress(status) })
 
     }
@@ -108,13 +162,22 @@ class FavoriteFragment : BaseFragment<FavoriteViewModel>() {
     }
 
 
-    private fun loadFavorites(data: List<ProductWithFavorite>?) {
+    private fun loadFavorites(
+        data: List<ProductWithFavorite>?,
+        status: Boolean
+    ) {
         if (data.isNullOrEmpty()) {
-           showNoData(root)
+            showNoData(root)
+            activity?.onBackPressed()
             return
         }
-        adapter.submitList(data)
-        recycler_view.adapter = adapter
+        if (status) {
+            adapter.submitList(data)
+            recycler_view.adapter = adapter
+            return
+        }
+        gridAdapter.submitList(data)
+        recycler_view.adapter = gridAdapter
     }
 
 

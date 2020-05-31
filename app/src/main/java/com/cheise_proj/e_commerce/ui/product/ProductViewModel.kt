@@ -3,8 +3,9 @@ package com.cheise_proj.e_commerce.ui.product
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
+import com.cheise_proj.e_commerce.data.db.entity.CartEntity
 import com.cheise_proj.e_commerce.data.db.entity.FavoriteEntity
-import com.cheise_proj.e_commerce.data.repository.FavoriteRepository
+import com.cheise_proj.e_commerce.data.repository.ICartRepository
 import com.cheise_proj.e_commerce.data.repository.IFavoriteRepository
 import com.cheise_proj.e_commerce.data.repository.IProductRepository
 import com.cheise_proj.e_commerce.di.IODispatcher
@@ -21,6 +22,7 @@ import javax.inject.Inject
 class ProductViewModel @Inject constructor(
     private val productRepository: IProductRepository,
     private val favoriteRepository: IFavoriteRepository,
+    private val cartRepository: ICartRepository,
     @IODispatcher private val dispatcher: CoroutineDispatcher
 ) :
     BaseViewModel() {
@@ -103,6 +105,12 @@ class ProductViewModel @Inject constructor(
             val favoriteEntity = FavoriteEntity()
             favoriteEntity.productId = identifier
             favoriteRepository.addFavorite(favoriteEntity)
+        }
+    }
+
+    fun addToCart(cartEntity: CartEntity){
+        viewModelScope.launch(dispatcher) {
+            cartRepository.addToCart(cartEntity)
         }
     }
 

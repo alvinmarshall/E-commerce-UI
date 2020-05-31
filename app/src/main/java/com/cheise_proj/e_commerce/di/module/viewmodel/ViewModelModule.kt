@@ -9,6 +9,7 @@ import com.cheise_proj.e_commerce.ui.bag.CheckoutViewModel
 import com.cheise_proj.e_commerce.ui.category.CategoryViewModel
 import com.cheise_proj.e_commerce.ui.favorite.FavoriteViewModel
 import com.cheise_proj.e_commerce.ui.product.ProductViewModel
+import com.cheise_proj.e_commerce.ui.profile.ProfileViewModel
 import com.cheise_proj.e_commerce.ui.review.ReviewViewModel
 import dagger.Binds
 import dagger.Module
@@ -52,6 +53,11 @@ class ViewModelModule {
         @IntoMap
         @ViewModelKey(CheckoutViewModel::class)
         fun bindCheckoutViewModel(checkoutViewModel: CheckoutViewModel): ViewModel
+
+        @Binds
+        @IntoMap
+        @ViewModelKey(ProfileViewModel::class)
+        fun bindProfileViewModelViewModel(profileViewModel: ProfileViewModel): ViewModel
 
     }
 

@@ -24,6 +24,7 @@ class BagViewModel @Inject constructor(
     BaseViewModel() {
     private val _productCart: MutableLiveData<List<ProductWithCart>> = MutableLiveData()
     val productCart: LiveData<List<ProductWithCart>> = _productCart
+
     fun addToCart() {
         viewModelScope.launch(dispatcher) {
             val data = CartEntity()

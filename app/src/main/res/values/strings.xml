@@ -85,6 +85,8 @@
     <string name="color_placeholder">Color: %1$s</string>
     <string name="size_placeholder">Size: %1$s</string>
     <string name="full_address_placeholder">%1$s, %2$s, %3$s</string>
+    <string name="order_number_placeholder">Order № %1$d</string>
+
 
     <!--    Filter-->
     <string name="label_apply">apply</string>
@@ -142,6 +144,21 @@
 
 
     <string name="no_data_msg">No data available</string>
+
+    <!--    ORDERS-->
+    <string name="label_order_information">Order information</string>
+    <string name="label_shipping_address">Shipping Address:</string>
+    <string name="label_payment_method">Payment method:</string>
+    <string name="label_delivery_method">Delivery method:</string>
+    <string name="label_discount">Discount:</string>
+    <string name="label_total">Total:</string>
+
+    <string name="label_delivered">Delivered</string>
+    <string name="label_processing">Processing</string>
+    <string name="label_cancelled">Cancelled</string>
+    <string name="label_tracking_number">Tracking number:</string>
+    <string name="label_quantity">Quantity:</string>
+    <string name="label_details">Details</string>
 
 
 </resources>

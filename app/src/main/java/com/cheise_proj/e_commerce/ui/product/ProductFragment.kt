@@ -90,9 +90,13 @@ class ProductFragment : BaseFragment<ProductViewModel>() {
                     when (data.first) {
                         HorizontalAdapterOption.VIEW -> navigateToProductDetail(data.second)
 
-                        HorizontalAdapterOption.FAVORITE -> viewModel.addToFavorite(
-                            data.second ?: ""
-                        )
+                        HorizontalAdapterOption.FAVORITE -> {
+                            viewModel.addToFavorite(
+                                data.second ?: ""
+                            )
+                            snackMessage(root, "item added")
+                        }
+
                     }
                 }
 
