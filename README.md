@@ -84,3 +84,7 @@ Check their twitter handle https://twitter.com/ardejob
 | :---------------------------------: | :----------------------------------: |
 | ![screenshot](./screenshot/favorite.jpg) | ![screenshot](./screenshot/address.jpg) |
 
+
+|            Reviews  Page             |           Review modal            |
+| :---------------------------------: | :----------------------------------: |
+| ![screenshot](./screenshot/reviews.jpg) | ![screenshot](./screenshot/create_review.jpg) |
