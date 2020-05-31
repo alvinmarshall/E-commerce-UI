@@ -10,27 +10,27 @@ object DeliveryService {
     fun getDeliveryTypes(): List<DeliveryEntity> {
         return arrayListOf(
             DeliveryEntity(
-                id = 0,
+                id = 1,
                 name = "FedEx",
                 imageUrl = "https://aibusiness.com/wp-content/uploads/2017/09/fedex-main.png",
                 duration = "2-3 days",
                 cost = 15
             ),
             DeliveryEntity(
-                id = 0,
+                id = 2,
                 name = "USPS.COM",
                 imageUrl = "https://d1yjjnpx0p53s8.cloudfront.net/styles/logo-thumbnail/s3/052018/untitled-1_365.png?us67Stpa2P0RQNUJp1qNIrEtCEuWkjLK&itok=Moe-idUs",
                 duration = "2-3 days",
-                cost = 15
+                cost = 20
             ),
 
 
             DeliveryEntity(
-                id = 0,
+                id = 3,
                 name = "DHL",
                 imageUrl = "https://logistyx.com/wp-content/uploads/2019/09/DHL-logo.png",
                 duration = "2-3 days",
-                cost = 15
+                cost = 12
             )
         )
 

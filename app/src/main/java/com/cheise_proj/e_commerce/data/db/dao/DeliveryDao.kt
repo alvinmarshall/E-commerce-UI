@@ -9,10 +9,8 @@ import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface DeliveryDao {
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun addDeliveries(deliveryEntityList: List<DeliveryEntity>)
 
-    @Insert
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
     fun addDelivery(deliveryEntity: DeliveryEntity)
 
     @Query("SELECT * FROM delivery")

@@ -70,8 +70,10 @@ abstract class LocalSource : RoomDatabase() {
 
         private fun prePopulateDelivery(deliveryDao: DeliveryDao) {
             val deliveries = DeliveryService.getDeliveryTypes()
-            Timber.i("prePopulate deliveries: $deliveries")
-            deliveryDao.addDeliveries(deliveries)
+            deliveries.forEach { delivery ->
+                Timber.i("prePopulate deliveries: $delivery")
+                deliveryDao.addDelivery(delivery)
+            }
         }
 
 

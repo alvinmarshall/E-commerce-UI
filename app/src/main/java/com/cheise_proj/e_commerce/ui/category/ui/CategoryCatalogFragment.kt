@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.cheise_proj.e_commerce.R
@@ -119,7 +120,6 @@ class CategoryCatalogFragment : BaseFragment<CategoryViewModel>() {
     private fun initRecyclerView() {
         recycler_view.apply {
             hasFixedSize()
-            layoutManager = LinearLayoutManager(context)
         }
         recycler_view_chip.apply {
             hasFixedSize()
@@ -172,10 +172,12 @@ class CategoryCatalogFragment : BaseFragment<CategoryViewModel>() {
         recycler_view.adapter = null
         if (status) {
             adapter.submitList(data)
+            recycler_view.layoutManager = LinearLayoutManager(context)
             recycler_view.adapter = adapter
             return
         }
         gridAdapter.submitList(data)
+        recycler_view.layoutManager = GridLayoutManager(context, 2)
         recycler_view.adapter = gridAdapter
 
     }

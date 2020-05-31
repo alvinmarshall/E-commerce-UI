@@ -42,6 +42,8 @@ class CreateAddressFragment : BaseFragment<CheckoutViewModel>() {
         val country = et_country.text.toString()
         val addressEntity = AddressEntity(0, fullName, address, city, state, zipCode, country, 0)
         viewModel.addAddress(addressEntity)
+        snackMessage(root, "address created")
+        activity?.onBackPressed()
     }
 
 }
