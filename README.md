@@ -2,7 +2,7 @@
 
 
 # E-commerce-UI
-An e-commerce challenge application
+An e-commerce mock application
 
 Ardejob community challenge
 
