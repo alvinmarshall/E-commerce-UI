@@ -37,13 +37,9 @@ Check their twitter handle https://twitter.com/ardejob
 | ![screenshot](./screenshot/signup.jpg) | ![screenshot](./screenshot/login.jpg) |
 
 
-|            Forgot Password Page             |            Product Page            |
+|            Forgot Password Page             |            Main 1 Page            |
 | :---------------------------------: | :----------------------------------: |
 | ![screenshot](./screenshot/forgot.jpg) | ![screenshot](./screenshot/product.jpg) |
-
-|            Product Detail Page             |            Add Card Modal            |
-| :---------------------------------: | :----------------------------------: |
-| ![screenshot](./screenshot/product_detail.jpg) | ![screenshot](./screenshot/add_card.jpg) |
 
 |            Main 3 Page             |           Category 1 Page            |
 | :---------------------------------: | :----------------------------------: |
@@ -63,6 +59,12 @@ Check their twitter handle https://twitter.com/ardejob
 |            Filter  Page             |           Create Address  Page            |
 | :---------------------------------: | :----------------------------------: |
 | ![screenshot](./screenshot/filter.jpg) | ![screenshot](./screenshot/create_address.jpg) |
+
+
+|            Product detail  Page             |           Add card  Modal            |
+| :---------------------------------: | :----------------------------------: |
+| ![screenshot](./screenshot/product_detail.jpg) | ![screenshot](./screenshot/add_card.jpg) |
+
 
 
 |            Payment method  Page             |           Checkout  Page            |
